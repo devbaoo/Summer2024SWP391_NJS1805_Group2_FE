@@ -1,19 +1,16 @@
-
 import MyFavourites from "@/components/dashboard/my-favourites";
 
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: 'My Favourites || FindHouse - Real Estate React Template',
-  description:
-    'FindHouse - Real Estate React Template',
-}
-
+  title: "My Favourites || MomMilk88",
+  description: "MomMilk88",
+};
 
 const MyFavouritePage = () => {
   return (
     <>
-    <MetaComponent meta={metadata} />
+      <MetaComponent meta={metadata} />
       <MyFavourites />
     </>
   );

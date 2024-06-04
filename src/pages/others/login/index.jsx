@@ -1,21 +1,19 @@
-
 import Login from "@/components/login";
 
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: 'Login || FindHouse - Real Estate React Template',
-  description:
-    'FindHouse - Real Estate React Template',
-}
+  title: "Login || MomMilk88",
+  description: "MomMilk88",
+};
 
 const LoginPage = () => {
   return (
     <>
-    <MetaComponent meta={metadata} />
+      <MetaComponent meta={metadata} />
       <Login />
     </>
   );
 };
 
-export default LoginPage
+export default LoginPage;

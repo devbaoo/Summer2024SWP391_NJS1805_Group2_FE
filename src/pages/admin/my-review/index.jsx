@@ -1,21 +1,19 @@
-
 import MyReview from "@/components/dashboard/my-review";
 
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: 'My Review || FindHouse - Real Estate React Template',
-  description:
-    'FindHouse - Real Estate React Template',
-}
+  title: "My Review || MomMilk88",
+  description: "MomMilk88",
+};
 
 const MyReviewPage = () => {
   return (
     <>
-    <MetaComponent meta={metadata} />
+      <MetaComponent meta={metadata} />
       <MyReview />
     </>
   );
 };
 
-export default MyReviewPage
+export default MyReviewPage;

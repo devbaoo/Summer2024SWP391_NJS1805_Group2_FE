@@ -1,21 +1,16 @@
-
-
-
-
 import NotFound from "@/components/404";
 
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: '404 Not Found || FindHouse - Real Estate React Template',
-  description:
-    'FindHouse - Real Estate React Template',
-}
+  title: "404 Not Found || MomMilk88",
+  description: "MomMilk88",
+};
 
 const NotFoundPage = () => {
   return (
     <>
-    <MetaComponent meta={metadata} />
+      <MetaComponent meta={metadata} />
       <NotFound />
     </>
   );

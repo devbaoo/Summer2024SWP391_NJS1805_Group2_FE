@@ -1,5 +1,3 @@
-
-
 import "photoswipe/dist/photoswipe.css";
 import CopyrightFooter from "@/components/common/footer/CopyrightFooter";
 import Footer from "@/components/common/footer/Footer";
@@ -10,24 +8,23 @@ import properties from "@/data/properties";
 import DetailsContent from "@/components/listing-details-v1/DetailsContent";
 import Sidebar from "@/components/listing-details-v1/Sidebar";
 import ListingOne from "@/components/listing-single/ListingOne";
-import {useParams} from 'react-router-dom'
+import { useParams } from "react-router-dom";
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: 'Listing Single – Details V1 || FindHouse - Real Estate React Template',
-  description:
-    'FindHouse - Real Estate React Template',
-}
+  title: "Listing Single – Details V1 || MomMilk88",
+  description: "MomMilk88",
+};
 
 const ListingDynamicDetailsV1 = () => {
   let params = useParams();
- 
+
   const id = params.id;
-  const property = properties?.find((item) => item.id == id) || properties[0]
+  const property = properties?.find((item) => item.id == id) || properties[0];
 
   return (
     <>
-        <MetaComponent meta={metadata} />
+      <MetaComponent meta={metadata} />
       {/* <!-- Main Header Nav --> */}
       <Header />
 
@@ -39,7 +36,6 @@ const ListingDynamicDetailsV1 = () => {
 
       {/* <!-- Listing Single Property --> */}
       <ListingOne property={property} />
-    
 
       {/* <!-- Agent Single Grid View --> */}
       <section className="our-agent-single bgc-f7 pb30-991">

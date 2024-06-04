@@ -1,21 +1,19 @@
-
 import Gallery from "@/components/gallery";
 
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: 'Gallery || FindHouse - Real Estate React Template',
-  description:
-    'FindHouse - Real Estate React Template',
-}
+  title: "Gallery || MomMilk88",
+  description: "MomMilk88",
+};
 
 const PageGallery = () => {
   return (
     <>
-    <MetaComponent meta={metadata} />
+      <MetaComponent meta={metadata} />
       <Gallery />
     </>
   );
 };
 
-export default PageGallery
+export default PageGallery;
