@@ -1,5 +1,3 @@
-
-
 import BreadCrumb2 from "@/components/blog-details/BreadCrumb2";
 import Comments from "@/components/blog-details/Comments";
 import Pagination from "@/components/blog-details/Pagination";
@@ -14,26 +12,24 @@ import Header from "@/components/common/header/DefaultHeader";
 import MobileMenu from "@/components/common/header/MobileMenu";
 import PopupSignInUp from "@/components/common/PopupSignInUp";
 import blogs from "@/data/blogs";
-import {useParams} from 'react-router-dom'
+import { useParams } from "react-router-dom";
 
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: 'Blog Details || FindHouse - Real Estate React Template',
-  description:
-    'FindHouse - Real Estate React Template',
-}
+  title: "Blog Details || MomMilk88",
+  description: "MomMilk88",
+};
 
 const BlogDetailsDynamic = () => {
   let params = useParams();
-  
-  const id = params.id;
-  const blog = blogs.find((item) => item.id == id) ||  blogs[0]
 
+  const id = params.id;
+  const blog = blogs.find((item) => item.id == id) || blogs[0];
 
   return (
     <>
-    <MetaComponent meta={metadata} />
+      <MetaComponent meta={metadata} />
 
       {/* <!-- Main Header Nav --> */}
       <Header />
@@ -66,7 +62,6 @@ const BlogDetailsDynamic = () => {
                     <li className="list-inline-item">
                       <a href="#">
                         <img
-                        
                           className="img-fluid"
                           src="/assets/images/property/pposter1.png"
                           alt="pposter1.png"
@@ -97,7 +92,6 @@ const BlogDetailsDynamic = () => {
                   </ul>
                   <div className="thumb">
                     <img
-                    
                       className="w-100 h-100 cover"
                       src={blog?.img}
                       alt={blog?.img}
@@ -264,4 +258,4 @@ const BlogDetailsDynamic = () => {
   );
 };
 
-export default BlogDetailsDynamic
+export default BlogDetailsDynamic;

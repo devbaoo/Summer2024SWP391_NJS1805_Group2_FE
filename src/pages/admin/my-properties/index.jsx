@@ -1,18 +1,16 @@
-
 import MyProperties from "@/components/dashboard/my-properties";
 
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: 'My Properties || FindHouse - Real Estate React Template',
-  description:
-    'FindHouse - Real Estate React Template',
-}
+  title: "My Properties || MomMilk88",
+  description: "MomMilk88",
+};
 
 const MyPropertiesPage = () => {
   return (
     <>
-    <MetaComponent meta={metadata} />
+      <MetaComponent meta={metadata} />
       <MyProperties />
     </>
   );

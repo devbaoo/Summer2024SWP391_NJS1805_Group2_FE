@@ -7,24 +7,23 @@ import Footer from "@/components/common/footer/Footer";
 import Header from "@/components/common/header/DefaultHeader";
 import MobileMenu from "@/components/common/header/MobileMenu";
 import PopupSignInUp from "@/components/common/PopupSignInUp";
-import {useParams} from 'react-router-dom'
+import { useParams } from "react-router-dom";
 import MetaComponent from "@/components/common/MetaComponent";
 
 const metadata = {
-  title: 'Agent Details || FindHouse - Real Estate React Template',
-  description:
-    'FindHouse - Real Estate React Template',
-}
+  title: "Agent Details || MomMilk88",
+  description: "MomMilk88",
+};
 
 const AgentDetailsDynamic = () => {
   let params = useParams();
 
   const id = params.id;
-  const agent=agents.find((item) => item.id == id) || agents[0]
+  const agent = agents.find((item) => item.id == id) || agents[0];
 
   return (
     <>
-        <MetaComponent meta={metadata} />
+      <MetaComponent meta={metadata} />
       {/* <!-- Main Header Nav --> */}
       <Header />
 
@@ -49,7 +48,6 @@ const AgentDetailsDynamic = () => {
                   <div className="feat_property list style2 agent align-items-center">
                     <div className="thumb">
                       <img
-                      
                         className="img-whp w-100 h-100 cover"
                         src={agent?.img}
                         alt={agent?.img}
