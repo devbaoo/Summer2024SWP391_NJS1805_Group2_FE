@@ -5,7 +5,7 @@ const GlobalHeroFilter = ({ className = "" }) => {
     <div className={`home_adv_srch_opt ${className}`}>
       <ul className="nav nav-pills" id="pills-tab" role="tablist">
         <li className="nav-item">
-          <a
+          {/* <a
             className="nav-link active"
             id="pills-home-tab"
             data-bs-toggle="pill"
@@ -15,11 +15,11 @@ const GlobalHeroFilter = ({ className = "" }) => {
             aria-selected="true"
           >
             Buy
-          </a>
+          </a> */}
         </li>
 
         <li className="nav-item">
-          <a
+          {/* <a
             className="nav-link"
             id="pills-profile-tab"
             data-bs-toggle="pill"
@@ -29,7 +29,7 @@ const GlobalHeroFilter = ({ className = "" }) => {
             aria-selected="false"
           >
             Rent
-          </a>
+          </a> */}
         </li>
       </ul>
       {/* End nav-pills */}
