@@ -30,40 +30,42 @@ const GlobalFilter = ({ className = "" }) => {
             />
           </div>
         </li>
-        {/* End li */}
-
+        
+        {/* Đối tượng */}
         <li className="list-inline-item">
           <div className="search_option_two">
             <div className="candidate_revew_select">
               <select className="selectpicker w100 form-select show-tick">
-                <option value="">Property Type</option>
-                <option>Apartment</option>
-                <option>Bungalow</option>
-                <option>Condo</option>
-                <option>House</option>
-                <option>Land</option>
-                <option>Single Family</option>
+                <option value="">Subject...</option>
+                <option>Babbies Under 6 month</option>
+                <option>Babbies Under 1 year</option>
+                <option>Babbies Above 1 year</option>
+                <option>For mom</option>
+                <option>For Kid</option>
               </select>
             </div>
           </div>
         </li>
-        {/* End li */}
+        
 
+        {/* Các loại sữa */}
         <li className="list-inline-item">
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Location"
-              onChange={(e) => dispatch(addLocation(e.target.value))}
-            />
-            <label>
-              <span className="flaticon-maps-and-flags"></span>
-            </label>
+          <div className="search_option_two">
+            <div className="candidate_revew_select">
+              <select className="selectpicker w100 form-select show-tick">
+                <option value="">Type...</option>
+                <option>Powdered</option>
+                <option>Fresh</option>
+                <option>Condensed</option>
+                <option>Lactose-Free</option>
+                <option>Organic</option>
+                <option>Plant-Based</option>
+              </select>
+            </div>
           </div>
         </li>
-        {/* End li */}
-
+        
+        {/* Price */}
         <li className="list-inline-item">
           <div className="small_dropdown2">
             <div
@@ -85,19 +87,19 @@ const GlobalFilter = ({ className = "" }) => {
             </div>
           </div>
         </li>
-        {/* End li */}
+
 
         <li className="custome_fields_520 list-inline-item">
           <div className="navbered">
             <div className="mega-dropdown ">
-              <span
+              {/* <span
                 className="dropbtn"
                 data-bs-toggle="dropdown"
                 data-bs-auto-close="outside"
                 aria-expanded="false"
               >
                 Advanced <i className="flaticon-more pl10 flr-520"></i>
-              </span>
+              </span> */}
 
               <div className="dropdown-content dropdown-menu ">
                 <div className="row p15">
