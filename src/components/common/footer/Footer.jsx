@@ -53,7 +53,7 @@ const Footer = () => {
             <a href="mailto:hungpvse172005@fpt.edu.vn">hungpvse172005@fpt.edu.vn</a>
             </li>
             <li>
-            <a href="mailto:baockse17xxxx@fpt.edu.vn">baockse17xxxx@fpt.edu.vn</a>
+            <a href="mailto:baockse17xxxx@fpt.edu.vn">baockse172296@fpt.edu.vn</a>
             </li>
             <li>
             <a href="mailto:kocamxuc818@gmail.com">kocamxuc818@gmail.com</a>
