@@ -1,4 +1,3 @@
-
 import CopyrightFooter from "../../components/common/footer/CopyrightFooter";
 import Footer from "../../components/common/footer/Footer";
 import Header from "../../components/common/header/DefaultHeader";
@@ -35,7 +34,6 @@ const index = () => {
                   <div className="feat_property list agency">
                     <div className="thumb">
                       <img
-                       
                         className="img-whp contain"
                         src="/assets/images/agency/2.jpg"
                         alt="11.jpg"
@@ -65,7 +63,7 @@ const index = () => {
                             <a href="#">Fax: 342 654 1258</a>
                           </li>
                           <li>
-                            <a href="#">Email: pakulla@findhouse.com</a>
+                            <a href="#">Email: pakulla@MomMilk.com</a>
                           </li>
                         </ul>
                       </div>

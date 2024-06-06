@@ -1,9 +1,6 @@
-
-
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HeaderMenuContent from "./HeaderMenuContent";
-
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
@@ -30,18 +27,16 @@ const Header = () => {
         {/* <!-- Menu Toggle btn--> */}
         <Link to="/" className="navbar_brand float-start dn-smd">
           <img
-           
             className="logo1 img-fluid"
             src="/assets/images/header-logo2.png"
             alt="header-logo2.png"
           />
           <img
-           
             className="logo2 img-fluid"
             src="/assets/images/header-logo2.png"
             alt="header-logo2.png"
           />
-          <span>FindHouse</span>
+          <span>MomMilk</span>
         </Link>
         {/* site logo brand */}
 

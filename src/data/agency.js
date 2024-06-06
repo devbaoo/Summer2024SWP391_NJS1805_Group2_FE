@@ -16,7 +16,7 @@ const agency = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const agency = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ const agency = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
   },
   {
     id: 4,
@@ -73,7 +73,7 @@ const agency = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
   },
   {
     id: 5,
@@ -92,7 +92,7 @@ const agency = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
   },
   {
     id: 6,
@@ -111,8 +111,8 @@ const agency = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
   },
 ];
 
-export default agency
+export default agency;

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import MobileMenuContent from "./MobileMenuContent";
 
-
 const MobileMenu = () => {
   return (
     // <!-- Main Header Nav For Mobile -->
@@ -10,12 +9,11 @@ const MobileMenu = () => {
         <div className="header stylehome1">
           <div className="main_logo_home2 text-center">
             <img
-             
               className="nav_logo_img contain mt20"
               src="/assets/images/header-logo2.png"
               alt="header-logo2.png"
             />
-            <span className="mt20">FindHouse</span>
+            <span className="mt20">MomMilk</span>
           </div>
           {/* main_logo_home2 */}
 
