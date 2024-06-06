@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 const CopyrightFooter = () => {
   const menuItems = [
     { id: 1, name: "Home", routeLink: "/" },
-    { id: 2, name: "Listing", routeLink: "/listing-grid-v3" },
-    { id: 3, name: "Property", routeLink: "/listing-grid-v4" },
-    { id: 4, name: "About Us", routeLink: "/about-us" },
-    { id: 5, name: "Blog", routeLink: "/blog-list-3" },
+    // { id: 2, name: "Listing", routeLink: "/listing-grid-v3" },
+    // { id: 3, name: "Property", routeLink: "/listing-grid-v4" },
+    // { id: 4, name: "About Us", routeLink: "/about-us" },
+    // { id: 5, name: "Blog", routeLink: "/blog-list-3" },
     { id: 6, name: "Contact", routeLink: "/contact" },
   ];
 
@@ -28,14 +28,7 @@ const CopyrightFooter = () => {
       <div className="col-lg-6 col-xl-6">
         <div className="copyright-widget text-end">
           <p>
-            &copy; {new Date().getFullYear()} by{" "}
-            <a
-              href="https://themeforest.net/user/ib-themes"
-              target="_blank"
-              rel="noreferrer"
-            >
-              ib-themes
-            </a>
+            &copy; {new Date().getFullYear()} by{" Group 5 (SWP301 - NJS1805) "}
             . All rights reserved.
           </p>
         </div>
