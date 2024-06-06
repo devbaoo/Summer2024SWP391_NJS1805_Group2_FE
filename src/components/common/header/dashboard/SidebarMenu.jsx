@@ -1,13 +1,11 @@
-
-import { Link,useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   isParentPageActive,
   isSinglePageActive,
 } from "../../../../utils/daynamicNavigation";
 
-
 const SidebarMenu = () => {
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
 
   const myProperties = [
     { id: 1, name: "General Elements", route: "/my-properties" },
@@ -39,12 +37,8 @@ const SidebarMenu = () => {
       <ul className="sidebar-menu">
         <li className="sidebar_header header">
           <Link to="/">
-            <img
-             
-              src="/assets/images/header-logo2.png"
-              alt="header-logo2.png"
-            />
-            <span>FindHouse</span>
+            <img src="/assets/images/header-logo2.png" alt="header-logo2.png" />
+            <span>MomMilk</span>
           </Link>
         </li>
         {/* End header */}
@@ -54,9 +48,7 @@ const SidebarMenu = () => {
           <ul>
             <li
               className={`treeview ${
-                isSinglePageActive("/my-dashboard", pathname)
-                  ? "active"
-                  : ""
+                isSinglePageActive("/my-dashboard", pathname) ? "active" : ""
               }`}
             >
               <Link to="/my-dashboard">
@@ -66,9 +58,7 @@ const SidebarMenu = () => {
             </li>
             <li
               className={`treeview ${
-                isSinglePageActive("/create-listing", pathname)
-                  ? "active"
-                  : ""
+                isSinglePageActive("/create-listing", pathname) ? "active" : ""
               }`}
             >
               <Link to="/create-listing">
@@ -78,9 +68,7 @@ const SidebarMenu = () => {
             </li>
             <li
               className={`treeview ${
-                isSinglePageActive("/my-message", pathname)
-                  ? "active"
-                  : ""
+                isSinglePageActive("/my-message", pathname) ? "active" : ""
               }`}
             >
               <Link to="/my-message">
@@ -140,9 +128,7 @@ const SidebarMenu = () => {
 
             <li
               className={`treeview ${
-                isSinglePageActive("/my-favourites", pathname)
-                  ? "active"
-                  : ""
+                isSinglePageActive("/my-favourites", pathname) ? "active" : ""
               }`}
             >
               <Link to="/my-favourites">
@@ -152,9 +138,7 @@ const SidebarMenu = () => {
             </li>
             <li
               className={`treeview ${
-                isSinglePageActive("/my-saved-search", pathname)
-                  ? "active"
-                  : ""
+                isSinglePageActive("/my-saved-search", pathname) ? "active" : ""
               }`}
             >
               <Link to="/my-saved-search">

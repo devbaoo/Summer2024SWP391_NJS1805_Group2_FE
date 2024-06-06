@@ -22,7 +22,7 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "Atlanta",
   },
   {
@@ -48,7 +48,7 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "Florida",
   },
   {
@@ -74,7 +74,7 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "Los Angeles",
   },
   {
@@ -100,7 +100,7 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "Miami",
   },
   {
@@ -126,7 +126,7 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "New York",
   },
   {
@@ -152,7 +152,7 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "Orlando",
   },
   {
@@ -178,7 +178,7 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "Atlanta",
   },
   {
@@ -204,7 +204,7 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "Florida",
   },
   {
@@ -230,7 +230,7 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "Los Angeles",
   },
   {
@@ -256,7 +256,7 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "Miami",
   },
   {
@@ -282,7 +282,7 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "New York",
   },
   {
@@ -308,7 +308,7 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "Orlando",
   },
   {
@@ -334,9 +334,9 @@ const agent = [
     office: "134 456 3210",
     mobile: "891 456 9874",
     fax: "342 654 1258",
-    email: "pakulla@findhouse.com",
+    email: "pakulla@MomMilk.com",
     city: "Orlando",
   },
 ];
 
-export default agent
+export default agent;
