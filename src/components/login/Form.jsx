@@ -19,7 +19,7 @@ const Form = () => {
           type="text"
           className="form-control"
           required
-          placeholder="User Name Or Email"
+          placeholder="Username Or Email"
         />
         <div className="input-group-prepend">
           <div className="input-group-text">
@@ -69,31 +69,31 @@ const Form = () => {
       </button>
       {/* login button */}
 
-      <div className="divide">
+      {/* <div className="divide">
         <span className="lf_divider">Or</span>
         <hr />
-      </div>
+      </div> */}
       {/* devider */}
 
       <div className="row mt25">
-        <div className="col-lg-6">
+        {/* <div className="col-lg-6">
           <button
             type="submit"
             className="btn btn-block color-white bgc-fb mb0 w-100"
           >
             <i className="fa fa-facebook float-start mt5"></i> Facebook
           </button>
-        </div>
+        </div> */}
         {/* End .col */}
 
-        <div className="col-lg-6">
+        {/* <div className="col-lg-6">
           <button
             type="submit"
             className="btn btn2 btn-block color-white bgc-gogle mb0 w-100"
           >
             <i className="fa fa-google float-start mt5"></i> Google
           </button>
-        </div>
+        </div> */}
         {/* End .col */}
       </div>
       {/* more signin options */}

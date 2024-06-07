@@ -1,6 +1,6 @@
 const Social = () => {
   const socialContent = [
-    { id: 1, liveLink: "https://www.facebook.com/DevBaoo.712", icon: "fa-facebook" },
+    { id: 1, liveLink: "https://www.facebook.com/ngtangtaiphat/", icon: "fa-facebook" },
   ];
   return (
     <>
