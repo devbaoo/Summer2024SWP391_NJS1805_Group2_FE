@@ -104,11 +104,11 @@ const DetailedInfo = () => {
 
       <CheckBoxFilter /> */}
 
-      <div className="col-xl-12">
+      {/* <div className="col-xl-12">
         <div className="my_profile_setting_input overflow-hidden mt20">
           <button className="btn btn2 float-end">Confirm</button>
         </div>
-      </div>
+      </div> */}
       {/* End .col */}
     </div>
   );

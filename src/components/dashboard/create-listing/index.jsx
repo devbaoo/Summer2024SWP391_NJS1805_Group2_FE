@@ -84,12 +84,12 @@ const index = () => {
                     </div>
                     <DetailedInfo />
                   </div>
-                  {/* <div className="my_dashboard_review mt30">
+                  <div className="my_dashboard_review mt30">
                     <div className="col-lg-12">
                       <h3 className="mb30">Property media</h3>
                     </div>
                     <PropertyMediaUploader />
-                  </div> */}
+                  </div>
                   {/* <div className="my_dashboard_review mt30">
                     <div className="col-lg-12"> */}
                       {/* <h3 className="mb30">Floor Plans</h3> */}
