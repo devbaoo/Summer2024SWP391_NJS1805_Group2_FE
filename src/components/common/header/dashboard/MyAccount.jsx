@@ -22,8 +22,8 @@ const MyAccount = () => {
           alt="e1.png"
         />
         <p>
-          Ali Tufan <br />
-          <span className="address">alitufan@gmail.com</span>
+          Phát Nguyễn <br />
+          <span className="address">admin@mommilk.com</span>
         </p>
       </div>
       {/* End user_set_header */}

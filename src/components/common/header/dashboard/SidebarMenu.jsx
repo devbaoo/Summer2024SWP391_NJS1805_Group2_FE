@@ -46,7 +46,7 @@ const SidebarMenu = () => {
         <li className="title">
           <span>Main</span>
           <ul>
-            <li
+            {/* <li
               className={`treeview ${
                 isSinglePageActive("/my-dashboard", pathname) ? "active" : ""
               }`}
@@ -55,7 +55,7 @@ const SidebarMenu = () => {
                 <i className="flaticon-layers"></i>
                 <span> Dashboard</span>
               </Link>
-            </li>
+            </li> */}
             <li
               className={`treeview ${
                 isSinglePageActive("/create-listing", pathname) ? "active" : ""
@@ -89,7 +89,7 @@ const SidebarMenu = () => {
               }`}
             >
               <a data-bs-toggle="collapse" href="#my-property">
-                <i className="flaticon-home"></i> <span>My Properties</span>
+                <i className="flaticon-home"></i> <span>My Products</span>
                 <i className="fa fa-angle-down pull-right"></i>
               </a>
               <ul className="treeview-menu collapse" id="my-property">
@@ -104,7 +104,7 @@ const SidebarMenu = () => {
             </li>
             {/* end properties */}
 
-            <li
+            {/* <li
               className={`treeview ${
                 isParentPageActive(reviews, pathname) ? "active" : ""
               }`}
@@ -123,7 +123,7 @@ const SidebarMenu = () => {
                   </li>
                 ))}
               </ul>
-            </li>
+            </li> */}
             {/* End Review */}
 
             <li
@@ -131,20 +131,20 @@ const SidebarMenu = () => {
                 isSinglePageActive("/my-favourites", pathname) ? "active" : ""
               }`}
             >
-              <Link to="/my-favourites">
+              {/* <Link to="/my-favourites">
                 <i className="flaticon-magnifying-glass"></i>
                 <span> My Favorites</span>
-              </Link>
+              </Link> */}
             </li>
             <li
               className={`treeview ${
                 isSinglePageActive("/my-saved-search", pathname) ? "active" : ""
               }`}
             >
-              <Link to="/my-saved-search">
+              {/* <Link to="/my-saved-search">
                 <i className="flaticon-magnifying-glass"></i>
                 <span> Saved Search</span>
-              </Link>
+              </Link> */}
             </li>
           </ul>
         </li>

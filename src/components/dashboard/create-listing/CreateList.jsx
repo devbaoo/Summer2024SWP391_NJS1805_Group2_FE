@@ -3,7 +3,7 @@ const CreateList = () => {
     <>
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyTitle">Property Title</label>
+          <label htmlFor="propertyTitle">Product Title</label>
           <input type="text" className="form-control" id="propertyTitle" />
         </div>
       </div>
@@ -29,11 +29,12 @@ const CreateList = () => {
             data-live-search="true"
             data-width="100%"
           >
-            <option data-tokens="type1">Type1</option>
-            <option data-tokens="Type2">Type2</option>
-            <option data-tokens="Type3">Type3</option>
-            <option data-tokens="Type4">Type4</option>
-            <option data-tokens="Type5">Type5</option>
+            <option data-tokens="type1">Powdered</option>
+            <option data-tokens="Type2">Fresh</option>
+            <option data-tokens="Type3">Condensed</option>
+            <option data-tokens="Type4">Lactose-Free</option>
+            <option data-tokens="Type5">Organic</option>
+            <option data-tokens="Type6">Plant-Based</option>
           </select>
         </div>
       </div>
@@ -41,17 +42,17 @@ const CreateList = () => {
 
       <div className="col-lg-6 col-xl-6">
         <div className="my_profile_setting_input ui_kit_select_search form-group">
-          <label>Status</label>
+          <label>Subject</label>
           <select
             className="selectpicker form-select"
             data-live-search="true"
             data-width="100%"
           >
-            <option data-tokens="Status1">Status1</option>
-            <option data-tokens="Status2">Status2</option>
-            <option data-tokens="Status3">Status3</option>
-            <option data-tokens="Status4">Status4</option>
-            <option data-tokens="Status5">Status5</option>
+            <option data-tokens="Status1">Babbies Under 1mo</option>
+            <option data-tokens="Status2">Babbies Under 6mo</option>
+            <option data-tokens="Status3">Babbies Under 1y</option>
+            <option data-tokens="Status4">For Mom</option>
+            <option data-tokens="Status5">For Kids</option>
           </select>
         </div>
       </div>
@@ -71,7 +72,7 @@ const CreateList = () => {
 
       <div className="col-lg-4 col-xl-4">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="formGroupExampleArea">Area</label>
+          <label htmlFor="formGroupExampleArea">Quantity</label>
           <input
             type="text"
             className="form-control"
@@ -81,7 +82,7 @@ const CreateList = () => {
       </div>
       {/* End .col */}
 
-      <div className="col-lg-4 col-xl-4">
+      {/* <div className="col-lg-4 col-xl-4">
         <div className="my_profile_setting_input ui_kit_select_search form-group">
           <label>Rooms</label>
           <select
@@ -97,15 +98,15 @@ const CreateList = () => {
             <option data-tokens="Status6">Other</option>
           </select>
         </div>
-      </div>
+      </div> */}
       {/* End .col */}
 
-      <div className="col-xl-12">
+      {/* <div className="col-xl-12">
         <div className="my_profile_setting_input">
           <button className="btn btn1 float-start">Back</button>
           <button className="btn btn2 float-end">Next</button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

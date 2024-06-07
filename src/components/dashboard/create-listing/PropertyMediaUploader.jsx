@@ -77,7 +77,7 @@ const PropertyMediaUploader = () => {
         </div>
       </div>
       {/* End .col */}
-
+{/* 
       <div className="col-xl-6">
         <div className="resume_uploader mb30">
           <h3>Attachments</h3>
@@ -89,13 +89,12 @@ const PropertyMediaUploader = () => {
             </label>
           </form>
         </div>
-      </div>
+      </div> */}
       {/* End .col */}
 
       <div className="col-xl-12">
         <div className="my_profile_setting_input">
-          <button className="btn btn1 float-start">Back</button>
-          <button className="btn btn2 float-end">Next</button>
+          <button className="btn btn2 float-end">Confirm</button>
         </div>
       </div>
       {/* End .col */}

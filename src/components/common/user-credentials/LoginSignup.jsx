@@ -78,7 +78,7 @@ const LoginSignup = () => {
                   </div>
                   {/* End heading */}
 
-                  <div className="row mt25">
+                  {/* <div className="row mt25">
                     <div className="col-lg-12">
                       <button type="submit" className="btn btn-fb w-100">
                         <i className="fa fa-facebook float-start mt5"></i> Login
@@ -91,7 +91,7 @@ const LoginSignup = () => {
                         with Google
                       </button>
                     </div>
-                  </div>
+                  </div> */}
                   {/* End .row */}
 
                   <hr />
@@ -185,7 +185,7 @@ const LoginSignup = () => {
                 {/* End .heading */}
 
                 <form action="#">
-                  <div className="row ">
+                  {/* <div className="row ">
                     <div className="col-lg-12">
                       <button type="submit" className="btn btn-fb w-100">
                         <i className="fa fa-facebook float-start mt5"></i> Login
@@ -198,7 +198,7 @@ const LoginSignup = () => {
                         with Google
                       </button>
                     </div>
-                  </div>
+                  </div> */}
                   {/* End .row */}
 
                   <hr />
@@ -270,8 +270,7 @@ const LoginSignup = () => {
                       data-width="100%"
                     >
                       <option data-tokens="SelectRole">Single User</option>
-                      <option data-tokens="Agent/Agency">Agent</option>
-                      <option data-tokens="SingleUser">Multi User</option>
+                      <option data-tokens="Agent/Agency">Store Owner</option>
                     </select>
                   </div>
                   {/* End from-group */}
