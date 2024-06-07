@@ -15,120 +15,120 @@ const HeaderMenuContent = ({ float = "" }) => {
   const listing = [
     {
       id: 1,
-      title: "Listing Grid",
+      title: "Listing",
       items: [
+        // {
+        //   name: "Grid v1",
+        //   routerPath: "/listing-grid-v1",
+        // },
+        // {
+        //   name: "Grid v2",
+        //   routerPath: "/listing-grid-v2",
+        // },
+        // {
+        //   name: "Grid v3",
+        //   routerPath: "/listing-grid-v3",
+        // },
+        // {
+        //   name: "Grid v4",
+        //   routerPath: "/listing-grid-v4",
+        // },
+        // {
+        //   name: "Grid v5",
+        //   routerPath: "/listing-grid-v5",
+        // },
         {
-          name: "Grid v1",
-          routerPath: "/listing-grid-v1",
-        },
-        {
-          name: "Grid v2",
-          routerPath: "/listing-grid-v2",
-        },
-        {
-          name: "Grid v3",
-          routerPath: "/listing-grid-v3",
-        },
-        {
-          name: "Grid v4",
-          routerPath: "/listing-grid-v4",
-        },
-        {
-          name: "Grid v5",
-          routerPath: "/listing-grid-v5",
-        },
-        {
-          name: "Grid v6",
+          name: "All Products",
           routerPath: "/listing-grid-v6",
         },
       ],
     },
-    {
-      id: 2,
-      title: "Listing List",
-      items: [
-        {
-          name: "List V1",
-          routerPath: "/listing-list-v1",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Listing Style",
-      items: [
-        {
-          name: "Parallax Style",
-          routerPath: "/parallax-style",
-        },
-        {
-          name: "Slider Style",
-          routerPath: "/slider-style",
-        },
-        {
-          name: "Map Header",
-          routerPath: "/map-header",
-        },
-      ],
-    },
-    {
-      id: 4,
-      title: "Listing Half",
-      items: [
-        {
-          name: "Map V1",
-          routerPath: "/listing-map-v1",
-        },
-        {
-          name: "Map V2",
-          routerPath: "/listing-map-v2",
-        },
-        {
-          name: "Map V3",
-          routerPath: "/listing-map-v3",
-        },
-        {
-          name: "Map V4",
-          routerPath: "/listing-map-v4",
-        },
-      ],
-    },
-    {
-      id: 5,
-      title: "Agent View",
-      items: [
-        {
-          name: "Agent V1",
-          routerPath: "/agent-v1",
-        },
-        {
-          name: "Agent V2",
-          routerPath: "/agent-v2",
-        },
-        {
-          name: "Agent Details",
-          routerPath: "/agent-details/3",
-        },
-      ],
-    },
-    {
-      id: 6,
-      title: "Agencies View",
-      items: [
-        {
-          name: "Agencies V1",
-          routerPath: "/agency-v1",
-        },
-        {
-          name: "Agencies V2",
-          routerPath: "/agency-v2",
-        },
-        {
-          name: "Agencies Details",
-          routerPath: "/agency-details/1",
-        },
-      ],
-    },
+    // {
+    //   id: 2,
+    //   title: "Listing List",
+    //   items: [
+    //     {
+    //       name: "List V1",
+    //       routerPath: "/listing-list-v1",
+    //     },
+    //   ],
+    // },
+    // {
+    //   id: 3,
+    //   title: "Listing Style",
+    //   items: [
+    //     {
+    //       name: "Parallax Style",
+    //       routerPath: "/parallax-style",
+    //     },
+    //     {
+    //       name: "Slider Style",
+    //       routerPath: "/slider-style",
+    //     },
+    //     {
+    //       name: "Map Header",
+    //       routerPath: "/map-header",
+    //     },
+    //   ],
+    // },
+    // {
+    //   id: 4,
+    //   title: "Listing Half",
+    //   items: [
+    //     {
+    //       name: "Map V1",
+    //       routerPath: "/listing-map-v1",
+    //     },
+    //     {
+    //       name: "Map V2",
+    //       routerPath: "/listing-map-v2",
+    //     },
+    //     {
+    //       name: "Map V3",
+    //       routerPath: "/listing-map-v3",
+    //     },
+    //     {
+    //       name: "Map V4",
+    //       routerPath: "/listing-map-v4",
+    //     },
+    //   ],
+    // },
+    // {
+    //   id: 5,
+    //   title: "Agent View",
+    //   items: [
+    //     {
+    //       name: "Agent V1",
+    //       routerPath: "/agent-v1",
+    //     },
+    //     {
+    //       name: "Agent V2",
+    //       routerPath: "/agent-v2",
+    //     },
+    //     {
+    //       name: "Agent Details",
+    //       routerPath: "/agent-details/3",
+    //     },
+    //   ],
+    // },
+    // {
+    //   id: 6,
+    //   title: "Agencies View",
+    //   items: [
+    //     {
+    //       name: "Agencies V1",
+    //       routerPath: "/agency-v1",
+    //     },
+    //     {
+    //       name: "Agencies V2",
+    //       routerPath: "/agency-v2",
+    //     },
+    //     {
+    //       name: "Agencies Details",
+    //       routerPath: "/agency-details/1",
+    //     },
+    //   ],
+    // },
   ];
 
   const property = [
@@ -273,8 +273,8 @@ const HeaderMenuContent = ({ float = "" }) => {
               : undefined
           }
         >
-          {/* <span className="title">Listing</span> */}
-          {/* <span className="arrow"></span> */}
+          <span className="title">Listing</span>
+          <span className="arrow"></span>
         </a>
         {/* <!-- Level Two--> */}
         <ul className="sub-menu ">
@@ -381,8 +381,8 @@ const HeaderMenuContent = ({ float = "" }) => {
               : undefined
           }
         >
-          {/* <span className="title">Pages</span>
-          <span className="arrow"></span> */}
+          <span className="title">Pages</span>
+          <span className="arrow"></span>
         </a>
         <ul className="sub-menu ">
           {pages.map((item) => (
