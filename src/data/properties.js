@@ -6,10 +6,10 @@ const properties = [
     lat: 40.7279707552121,
     long: -74.07152705896405,
     type: "Apartment",
-    title: "Luxury Family Home",
+    title: "DENEAST VIETNAM",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Sale"],
+    saleTag: ["Featured", "Super Sales"],
     garages: "yes",
     itemDetails: [
       {
@@ -55,9 +55,9 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-lat: 34.1738017565271,
+    lat: 34.1738017565271,
     long: -118.34227408812067,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     garages: "no",
     itemDetails: [
       {
@@ -105,7 +105,7 @@ lat: 34.1738017565271,
     St, Los Angeles, CA 900015`,
     lat: 29.38690953884771,
     long: -94.91651439187791,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     garages: "others",
     itemDetails: [
       {
@@ -151,9 +151,9 @@ lat: 34.1738017565271,
     title: "Gorgeous Villa Bay View",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-lat: 41.62158564223682,
+    lat: 41.62158564223682,
     long: -82.15625432727268,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -201,7 +201,7 @@ lat: 41.62158564223682,
     long: -80.15625432727268,
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -246,9 +246,9 @@ St, Los Angeles, CA 900015`,
     title: "Gorgeous Villa Bay View",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-lat: 40.7279707552121,
-        long: -74.07152705896405,
-    saleTag: ["Featured", "For Rent"],
+    lat: 40.7279707552121,
+    long: -74.07152705896405,
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -293,7 +293,7 @@ lat: 40.7279707552121,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -338,7 +338,7 @@ St, Los Angeles, CA 900015`,
     title: "Gorgeous Villa Bay View",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -383,7 +383,7 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -425,10 +425,10 @@ St, Los Angeles, CA 900015`,
     img: "/assets/images/property/fp15.jpg",
     price: "15000",
     type: "Apartment",
-    title: "Luxury Family Home",
+    title: "DENEAST VIETNAM",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -473,7 +473,7 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -516,10 +516,10 @@ St, Los Angeles, CA 900015`,
     img: "/assets/images/property/fp17.jpg",
     price: "13000",
     type: "Bungalow",
-    title: "Luxury Family Home",
+    title: "DENEAST VIETNAM",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -565,7 +565,7 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -608,10 +608,10 @@ St, Los Angeles, CA 900015`,
     img: "/assets/images/property/fp5.jpg",
     price: "13000",
     type: "Condo",
-    title: "Luxury Family Home",
+    title: "DENEAST VIETNAM",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -657,7 +657,7 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -703,7 +703,7 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -749,7 +749,7 @@ St, Los Angeles, CA 900015`,
     title: "Gorgeous Villa Bay View",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -794,7 +794,7 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -836,10 +836,10 @@ St, Los Angeles, CA 900015`,
     img: "/assets/images/property/fp13.jpg",
     price: "12000",
     type: "Single Family Home",
-    title: "Luxury Family Home",
+    title: "DENEAST VIETNAM",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -883,7 +883,7 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -928,7 +928,7 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -972,7 +972,7 @@ St, Los Angeles, CA 900015`,
     title: "Sweet Family Home",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -1017,7 +1017,7 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -1059,10 +1059,10 @@ St, Los Angeles, CA 900015`,
     img: "/assets/images/property/fp3.jpg",
     price: "13000",
     type: "Villa",
-    title: "Luxury Family Home",
+    title: "DENEAST VIETNAM",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -1106,7 +1106,7 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -1148,10 +1148,10 @@ St, Los Angeles, CA 900015`,
     img: "/assets/images/property/fp8.jpg",
     price: "13000",
     type: "Single Family Home",
-    title: "Luxury Family Home",
+    title: "DENEAST VIETNAM",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -1196,7 +1196,7 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -1238,7 +1238,7 @@ St, Los Angeles, CA 900015`,
     img: "/assets/images/property/fp4.jpg",
     price: "19000",
     type: "",
-    title: "Luxury Family Home",
+    title: "DENEAST VIETNAM",
     location: ``,
     saleTag: [],
     itemDetails: [
@@ -1281,7 +1281,7 @@ St, Los Angeles, CA 900015`,
     img: "/assets/images/property/fp5.jpg",
     price: "12000",
     type: "Apartment",
-    title: "Luxury Family Home",
+    title: "DENEAST VIETNAM",
     location: ``,
     saleTag: [],
     itemDetails: [
@@ -1372,7 +1372,7 @@ St, Los Angeles, CA 900015`,
     title: "Gorgeous Villa Bay View",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -1418,7 +1418,7 @@ St, Los Angeles, CA 900015`,
     title: "Renovated Apartment",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -1464,7 +1464,7 @@ St, Los Angeles, CA 900015`,
     title: "Gorgeous Villa Bay View",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
-    saleTag: ["Featured", "For Rent"],
+    saleTag: ["Featured", "Super Sales"],
     itemDetails: [
       {
         name: "Beds",
@@ -1694,7 +1694,7 @@ St, Los Angeles, CA 900015`,
     img: "/assets/images/property/ls1.jpg",
     price: "13000",
     type: "",
-    title: "Luxury Family Home",
+    title: "DENEAST VIETNAM",
     location: `1421 San Pedro
 St, Los Angeles, CA 900015`,
     saleTag: [],
@@ -1728,4 +1728,4 @@ St, Los Angeles, CA 900015`,
     created_at: 1667180799028,
   },
 ];
-export default properties
+export default properties;

@@ -25,7 +25,7 @@ const index = () => {
           <div className="row">
             <div className="col-lg-7 col-xl-8">
               <div className="single_property_title ">
-                <h2>Luxury Family Home</h2>
+                <h2>DENEAST VIETNAM</h2>
                 <p>1421 San Pedro St, Los Angeles, CA 90015</p>
               </div>
             </div>

@@ -3,7 +3,7 @@ const TagList = () => {
     { id: 1, name: "Apartment" },
     { id: 2, name: "Real Estate" },
     { id: 3, name: "Estate" },
-    { id: 4, name: "Luxury" },
+    { id: 4, name: "DENEAST VIETNAM" },
     { id: 5, name: "Real" },
   ];
   return (

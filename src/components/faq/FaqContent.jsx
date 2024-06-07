@@ -12,7 +12,7 @@ const FaqContent = () => {
               aria-expanded="false"
               aria-controls="collapseOne"
             >
-              How do I create an account?
+              What is MilkForMomAndBabies?
             </button>
           </div>
           <div
@@ -23,8 +23,10 @@ const FaqContent = () => {
           >
             <div className="card-body">
               <p>
-              To create an account, click on the "Sign Up" button on the top 
-              right corner of the homepage and fill in the required information.
+                MilkForMomAndBabies is an e-commerce platform specializing in
+                providing milk products for pregnant mothers and babies. The
+                platform helps users easily search, and purchase milk products
+                suitable for their needs.
               </p>
             </div>
           </div>
@@ -41,7 +43,7 @@ const FaqContent = () => {
               aria-expanded="true"
               aria-controls="collapseTwo"
             >
-              How do I place an order?
+              How do I create an account on MilkForMomAndBabies?
             </button>
           </div>
           <div
@@ -52,8 +54,10 @@ const FaqContent = () => {
           >
             <div className="card-body">
               <p>
-              Browse our products, select the items you want to purchase, 
-              add them to your cart, and proceed to checkout.
+                To create an account, simply click the "Sign Up" button on the
+                homepage, fill in the necessary personal information, and verify
+                via email. Once confirmed, you can log in and use all the
+                platform's features.
               </p>
             </div>
           </div>
@@ -70,7 +74,7 @@ const FaqContent = () => {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              Can I change or cancel my order?
+              How do I search for the right milk products?
             </button>
           </div>
           <div
@@ -81,8 +85,9 @@ const FaqContent = () => {
           >
             <div className="card-body">
               <p>
-              Orders can be changed or canceled within 24 hours of placing them. 
-              Please contact customer service for assistance.
+                You can use the search bar on the homepage to enter the product
+                name or use filters such as brand, type of milk, age range, and
+                price to find products that meet your needs.
               </p>
             </div>
           </div>
@@ -99,7 +104,7 @@ const FaqContent = () => {
               aria-expanded="false"
               aria-controls="collapseFour"
             >
-              Is my payment information secure?
+              What is the return policy of MilkForMomAndBabies?
             </button>
           </div>
           <div
@@ -110,7 +115,10 @@ const FaqContent = () => {
           >
             <div className="card-body">
               <p>
-              Yes, we use secure encryption technology to ensure your payment information is protected.
+                We offer a 30-day return policy from the date of receipt.
+                Products must be intact, unused, and with the original purchase
+                receipt. Please contact our customer service for detailed
+                instructions.
               </p>
             </div>
           </div>
@@ -127,7 +135,7 @@ const FaqContent = () => {
               aria-expanded="false"
               aria-controls="collapseFive"
             >
-              Do you offer price matching or adjustments?
+              What payment methods are accepted?
             </button>
           </div>
           <div
@@ -138,7 +146,9 @@ const FaqContent = () => {
           >
             <div className="card-body">
               <p>
-              We offer price matching within 7 days of purchase. Please contact customer service for more details.
+                We accept payments via credit card, debit card, e-wallet, and
+                bank transfer. All payment transactions are secured to ensure
+                your information is safe.
               </p>
             </div>
           </div>
@@ -155,7 +165,7 @@ const FaqContent = () => {
               aria-expanded="false"
               aria-controls="collapseSix"
             >
-              What are your shipping options?
+              How do I track my order?
             </button>
           </div>
           <div
@@ -166,8 +176,9 @@ const FaqContent = () => {
           >
             <div className="card-body">
               <p>
-              We offer standard, express, and overnight shipping options. 
-              Shipping costs and delivery times vary based on your location.
+                After placing an order, you will receive a confirmation email
+                with a tracking number. You can use this number to track the
+                status of your order on our website.
               </p>
             </div>
           </div>
@@ -184,7 +195,7 @@ const FaqContent = () => {
               aria-expanded="false"
               aria-controls="collapseSeven"
             >
-              What is your return policy?
+              Does MilkForMomAndBabies have a loyalty program?
             </button>
           </div>
           <div
@@ -195,9 +206,10 @@ const FaqContent = () => {
           >
             <div className="card-body">
               <p>
-              We accept returns within 30 days of purchase. 
-              Items must be in original condition and packaging. 
-              Some exclusions apply.
+                Yes, we have a loyalty program. When you purchase and accumulate
+                reward points, you can use these points for discounts on future
+                purchases. Details about the program will be updated on our
+                website.
               </p>
             </div>
           </div>
@@ -214,7 +226,7 @@ const FaqContent = () => {
               aria-expanded="false"
               aria-controls="collapseEight"
             >
-              How can I find out if an item is back in stock?
+              How do I contact customer service?
             </button>
           </div>
           <div
@@ -225,7 +237,9 @@ const FaqContent = () => {
           >
             <div className="card-body">
               <p>
-              You can sign up for email notifications on the product page to be alerted when an item is back in stock.
+                You can contact customer service via email at
+                baockse172296@fpt.edu.vn or call our hotline number provided on
+                the website.
               </p>
             </div>
           </div>
@@ -242,7 +256,7 @@ const FaqContent = () => {
               aria-expanded="false"
               aria-controls="collapseNine"
             >
-              How do I apply a discount code?
+              Is my personal information secure with MilkForMomAndBaby?
             </button>
           </div>
           <div
@@ -253,7 +267,9 @@ const FaqContent = () => {
           >
             <div className="card-body">
               <p>
-              Enter the discount code at checkout in the designated box and click "Apply."
+                We are committed to protecting your personal information. All
+                personal data is encrypted and stored securely. We do not share
+                your information with third parties without your consent.
               </p>
             </div>
           </div>
@@ -270,7 +286,7 @@ const FaqContent = () => {
               aria-expanded="false"
               aria-controls="collapseTen"
             >
-              Can I use multiple discount codes?
+              Can I cancel my order after placing it?
             </button>
           </div>
           <div
@@ -281,7 +297,9 @@ const FaqContent = () => {
           >
             <div className="card-body">
               <p>
-              Only one discount code can be applied per order unless otherwise stated.
+                Yes, you can cancel your order within 24 hours of placing it.
+                Please contact customer service with your order details for
+                assistance with the cancellation.
               </p>
             </div>
           </div>

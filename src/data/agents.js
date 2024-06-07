@@ -249,7 +249,7 @@ const agent = [
       },
       { icon: "fa-dribbble", liveLink: "https://www.dribbble.com/" },
     ],
-    name: `Luxury Family Home`,
+    name: `DENEAST VIETNAM`,
     type: "Broker",
     ratings: 3.5,
     noOfListings: "4",

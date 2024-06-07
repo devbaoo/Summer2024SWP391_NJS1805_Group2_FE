@@ -12,8 +12,7 @@ const Activities = () => {
 
           <li className="list-inline-item">
             <p>
-              Your listing <strong>Luxury Family Home</strong> has been
-              approved!.
+              Your listing <strong>DENEAST VIETNAM</strong> has been approved!.
             </p>
           </li>
         </ul>
@@ -68,8 +67,7 @@ const Activities = () => {
 
           <li className="list-inline-item">
             <p>
-              Your listing <strong>Luxury Family Home</strong> has been
-              approved!
+              Your listing <strong>DENEAST VIETNAM</strong> has been approved!
             </p>
           </li>
         </ul>

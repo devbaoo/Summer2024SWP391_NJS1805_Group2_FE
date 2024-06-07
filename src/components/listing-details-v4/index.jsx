@@ -38,7 +38,7 @@ const index = () => {
             <div className="row listing_single_row style2">
               <div className="col-md-7 col-lg-7 col-xl-8">
                 <div className="single_property_title multicolor_style mt30-767">
-                  <h2>Luxury Family Home</h2>
+                  <h2>DENEAST VIETNAM</h2>
                   <p>1421 San Pedro St, Los Angeles, CA 90015</p>
                 </div>
               </div>

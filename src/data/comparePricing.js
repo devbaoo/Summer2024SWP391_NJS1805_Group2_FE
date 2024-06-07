@@ -17,7 +17,7 @@ const comparePricing = [
     id: 2,
     img: "/assets/images/pricing/2.jpg",
     price: "16,000",
-    propertyName: "Luxury Family Home",
+    propertyName: "DENEAST VIETNAM",
     propertyType: "Apartment",
     city: "Buffalo",
     beds: "4",
@@ -42,4 +42,4 @@ const comparePricing = [
     status: "Active",
   },
 ];
-export default comparePricing
+export default comparePricing;
