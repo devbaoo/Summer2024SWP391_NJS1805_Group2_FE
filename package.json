@@ -15,6 +15,7 @@
     "@material-ui/icons": "^4.11.3",
     "@react-google-maps/api": "^2.19.2",
     "@reduxjs/toolkit": "^1.9.7",
+    "axios": "^1.7.2",
     "bootstrap": "^5.2.1",
     "chart.js": "^4.4.0",
     "photoswipe": "^5.4.2",
