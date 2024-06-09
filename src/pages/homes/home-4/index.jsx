@@ -4,7 +4,7 @@ import MetaComponent from "@/components/common/MetaComponent";
 import BannerVoucher from "@/components/home-4/Bannervoucher";
 
 const metadata = {
-  title: "Home-4 || MomMilk88",
+  title: "MomMilk88",
   description: "MomMilk88",
 };
 

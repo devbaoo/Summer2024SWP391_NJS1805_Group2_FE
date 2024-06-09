@@ -1,12 +1,12 @@
-import Blogs from "../common/Blogs";
+// import Blogs from "../common/Blogs";
 import GlobalHeroFilter from "../common/GlobalHeroFilter";
 import MobileMenu from "../common/header/MobileMenu";
 import FeaturedProperties from "./FeaturedProperties";
-import FindProperties from "./FindProperties";
+// import FindProperties from "./FindProperties";
 import Header from "./Header";
 import HeroSlider from "./HeroSlider";
-import LookingItem from "./LookingItem";
-import Team from "./Team";
+// import LookingItem from "./LookingItem";
+// import Team from "./Team";
 import CopyrightFooter from "../common/footer/CopyrightFooter";
 import Footer from "../common/footer/Footer";
 import PopupSignInUp from "../common/PopupSignInUp";
@@ -42,7 +42,8 @@ const index = () => {
                 <div className="home-text text-center">
                   <h2 className="fz55">MOMMILK</h2>
                   <p className="fz18 color-white">
-                  On the journey of learning and growth with you and your child.
+                    On the journey of learning and growth with you and your
+                    child.
                   </p>
                 </div>
                 <GlobalHeroFilter className="home4" />

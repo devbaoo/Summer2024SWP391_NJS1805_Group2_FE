@@ -1,6 +1,55 @@
 // import { Link } from "react-router-dom";
+import axiosInstance from "@/config/axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginSignup = () => {
+  const navigate = useNavigate();
+  const [loginForm, setLoginForm] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axiosInstance.post("Accounts/login", loginForm);
+      if (response.data.success === false) {
+        alert("Invalid username or password");
+      } else {
+        const userInfo = {
+          isLoggedIn: true,
+          email: response.data.data.userResult.username,
+          fullname: response.data.data.userResult.fullname,
+          phone: response.data.data.userResult.phone,
+          accessToken: response.data.data.token.accessToken,
+          isAdmin: response.data.data.userResult.isAdmin,
+        };
+
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        localStorage.setItem("isLoggedIn", "true");
+
+        console.log(response);
+        if (response.data.data.userResult.isAdmin) {
+          navigate("/admin");
+        } else {
+          // navigate("/");
+          window.location.reload();
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginForm({
+      ...loginForm,
+      [name]: value,
+    });
+  };
+
   return (
     <div className="modal-content">
       <div className="modal-header">
@@ -11,8 +60,6 @@ const LoginSignup = () => {
           className="btn-close"
         ></button>
       </div>
-      {/* End .modal-header */}
-
       <div className="modal-body container pb20">
         <div className="row">
           <div className="col-lg-12">
@@ -30,8 +77,6 @@ const LoginSignup = () => {
                   Login
                 </a>
               </li>
-              {/* End login tab */}
-
               <li className="nav-item">
                 <a
                   className="nav-link"
@@ -45,13 +90,9 @@ const LoginSignup = () => {
                   Register
                 </a>
               </li>
-              {/* End Register tab */}
             </ul>
-            {/* End .sign_up_tab */}
           </div>
         </div>
-        {/* End .row */}
-
         <div className="tab-content container" id="myTabContent">
           <div
             className="row mt25 tab-pane fade show active"
@@ -68,40 +109,22 @@ const LoginSignup = () => {
                 />
               </div>
             </div>
-            {/* End col */}
-
             <div className="col-lg-6 col-xl-6">
               <div className="login_form">
-                <form action="#">
+                <form onSubmit={handleSubmit}>
                   <div className="heading">
                     <h4>Login</h4>
                   </div>
-                  {/* End heading */}
-
-                  {/* <div className="row mt25">
-                    <div className="col-lg-12">
-                      <button type="submit" className="btn btn-fb w-100">
-                        <i className="fa fa-facebook float-start mt5"></i> Login
-                        with Facebook
-                      </button>
-                    </div>
-                    <div className="col-lg-12">
-                      <button type="submit" className="btn btn-googl w-100">
-                        <i className="fa fa-google float-start mt5"></i> Login
-                        with Google
-                      </button>
-                    </div>
-                  </div> */}
-                  {/* End .row */}
-
                   <hr />
-
                   <div className="input-group mb-2 mr-sm-2">
                     <input
                       type="text"
                       className="form-control"
                       id="inlineFormInputGroupUsername2"
                       placeholder="User Name Or Email"
+                      name="username"
+                      value={loginForm.username}
+                      onChange={handleChange}
                     />
                     <div className="input-group-prepend">
                       <div className="input-group-text">
@@ -109,14 +132,15 @@ const LoginSignup = () => {
                       </div>
                     </div>
                   </div>
-                  {/* End input-group */}
-
                   <div className="input-group form-group">
                     <input
                       type="password"
                       className="form-control"
                       id="exampleInputPassword1"
                       placeholder="Password"
+                      name="password"
+                      value={loginForm.password}
+                      onChange={handleChange}
                     />
                     <div className="input-group-prepend">
                       <div className="input-group-text">
@@ -124,8 +148,6 @@ const LoginSignup = () => {
                       </div>
                     </div>
                   </div>
-                  {/* End input-group */}
-
                   <div className="form-group form-check custom-checkbox mb-3">
                     <input
                       className="form-check-input"
@@ -135,31 +157,23 @@ const LoginSignup = () => {
                     <label className="form-check-label form-check-label">
                       Remember me
                     </label>
-
                     <a className="btn-fpswd float-end" href="#">
                       Lost your password?
                     </a>
                   </div>
-                  {/* End remember me checkbox */}
-
                   <button type="submit" className="btn btn-log w-100 btn-thm">
                     Log In
                   </button>
-                  {/* End submit button */}
-
                   <p className="text-center">
-                    Dont have an account?{" "}
+                    Don't have an account?{" "}
                     <a className="text-thm" href="#">
                       Register
                     </a>
                   </p>
                 </form>
               </div>
-              {/* End .col .login_form */}
             </div>
           </div>
-          {/* End .tab-pane */}
-
           <div
             className="row mt25 tab-pane fade"
             id="profile"
@@ -175,34 +189,13 @@ const LoginSignup = () => {
                 />
               </div>
             </div>
-            {/* End . left side image for register */}
-
             <div className="col-lg-6 col-xl-6">
               <div className="sign_up_form">
                 <div className="heading">
                   <h4>Register</h4>
                 </div>
-                {/* End .heading */}
-
                 <form action="#">
-                  {/* <div className="row ">
-                    <div className="col-lg-12">
-                      <button type="submit" className="btn btn-fb w-100">
-                        <i className="fa fa-facebook float-start mt5"></i> Login
-                        with Facebook
-                      </button>
-                    </div>
-                    <div className="col-lg-12">
-                      <button type="submit" className="btn btn-googl w-100">
-                        <i className="fa fa-google float-start mt5"></i> Login
-                        with Google
-                      </button>
-                    </div>
-                  </div> */}
-                  {/* End .row */}
-
                   <hr />
-
                   <div className="form-group input-group mb-3">
                     <input
                       type="text"
@@ -216,8 +209,6 @@ const LoginSignup = () => {
                       </div>
                     </div>
                   </div>
-                  {/* End .row */}
-
                   <div className="form-group input-group  mb-3">
                     <input
                       type="email"
@@ -231,8 +222,6 @@ const LoginSignup = () => {
                       </div>
                     </div>
                   </div>
-                  {/* End .row */}
-
                   <div className="form-group input-group  mb-3">
                     <input
                       type="password"
@@ -246,8 +235,6 @@ const LoginSignup = () => {
                       </div>
                     </div>
                   </div>
-                  {/* End .row */}
-
                   <div className="form-group input-group  mb-3">
                     <input
                       type="password"
@@ -261,8 +248,6 @@ const LoginSignup = () => {
                       </div>
                     </div>
                   </div>
-                  {/* End .row */}
-
                   <div className="form-group ui_kit_select_search mb-3">
                     <select
                       className="form-select"
@@ -273,8 +258,6 @@ const LoginSignup = () => {
                       <option data-tokens="Agent/Agency">Store Owner</option>
                     </select>
                   </div>
-                  {/* End from-group */}
-
                   <div className="form-group form-check custom-checkbox mb-3">
                     <input
                       className="form-check-input"
@@ -285,13 +268,9 @@ const LoginSignup = () => {
                       I have accept the Terms and Privacy Policy.
                     </label>
                   </div>
-                  {/* End from-group */}
-
                   <button type="submit" className="btn btn-log w-100 btn-thm">
                     Sign Up
                   </button>
-                  {/* End btn */}
-
                   <p className="text-center">
                     Already have an account?{" "}
                     <a className="text-thm" href="#">
@@ -299,12 +278,9 @@ const LoginSignup = () => {
                     </a>
                   </p>
                 </form>
-                {/* End .form */}
               </div>
             </div>
-            {/* End register content */}
           </div>
-          {/* End .tab-pane */}
         </div>
       </div>
     </div>

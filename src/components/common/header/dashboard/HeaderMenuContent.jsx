@@ -1,11 +1,10 @@
-
-import { Link,useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import MyAccount from "./MyAccount";
 
 const HeaderMenuContent = ({ float = "" }) => {
-
-  const { pathname } = useLocation()
-
+  const { pathname } = useLocation();
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const fullname = userInfo ? userInfo.fullname : "";
   const home = [
     {
       id: 1,
@@ -248,7 +247,10 @@ const HeaderMenuContent = ({ float = "" }) => {
         <a
           href="#"
           className={
-            home.some((page) => page.routerPath?.split('/')[1] === pathname?.split('/')[1])
+            home.some(
+              (page) =>
+                page.routerPath?.split("/")[1] === pathname?.split("/")[1]
+            )
               ? "ui-active"
               : undefined
           }
@@ -264,7 +266,9 @@ const HeaderMenuContent = ({ float = "" }) => {
               <Link
                 to={item.routerPath}
                 className={
-                  pathname?.split('/')[1] === item.routerPath?.split('/')[1] ? "ui-active" : undefined
+                  pathname?.split("/")[1] === item.routerPath?.split("/")[1]
+                    ? "ui-active"
+                    : undefined
                 }
               >
                 {item.name}
@@ -281,7 +285,8 @@ const HeaderMenuContent = ({ float = "" }) => {
           className={
             listing.some((parent) => {
               return parent.items.some(
-                (page) => page.routerPath?.split('/')[1] === pathname?.split('/')[1]
+                (page) =>
+                  page.routerPath?.split("/")[1] === pathname?.split("/")[1]
               );
             })
               ? "ui-active"
@@ -298,7 +303,10 @@ const HeaderMenuContent = ({ float = "" }) => {
               <a
                 href="#"
                 className={
-                  item.items.some((page) => page.routerPath?.split('/')[1] === pathname?.split('/')[1])
+                  item.items.some(
+                    (page) =>
+                      page.routerPath?.split("/")[1] === pathname?.split("/")[1]
+                  )
                     ? "ui-active"
                     : undefined
                 }
@@ -312,7 +320,8 @@ const HeaderMenuContent = ({ float = "" }) => {
                     <Link
                       to={val.routerPath}
                       className={
-                        pathname?.split('/')[1] === val.routerPath?.split('/')[1]
+                        pathname?.split("/")[1] ===
+                        val.routerPath?.split("/")[1]
                           ? "ui-active"
                           : undefined
                       }
@@ -335,8 +344,8 @@ const HeaderMenuContent = ({ float = "" }) => {
             property.some((parent) => {
               return parent.items.some(
                 (page) =>
-                  page.routerPath?.split('/')[1] === pathname?.split('/')[1] 
-                  // page.routerPath?.split('/')[1] + "/[id]" === pathname?.split('/')[1]
+                  page.routerPath?.split("/")[1] === pathname?.split("/")[1]
+                // page.routerPath?.split('/')[1] + "/[id]" === pathname?.split('/')[1]
               );
             })
               ? "ui-active"
@@ -354,8 +363,8 @@ const HeaderMenuContent = ({ float = "" }) => {
                 className={
                   item.items.some(
                     (page) =>
-                      page.routerPath?.split('/')[1] === pathname?.split('/')[1] 
-                      // page.routerPath?.split('/')[1] + "/[id]" === pathname?.split('/')[1]
+                      page.routerPath?.split("/")[1] === pathname?.split("/")[1]
+                    // page.routerPath?.split('/')[1] + "/[id]" === pathname?.split('/')[1]
                   )
                     ? "ui-active"
                     : undefined
@@ -370,9 +379,10 @@ const HeaderMenuContent = ({ float = "" }) => {
                     <Link
                       to={val.routerPath}
                       className={
-                        pathname?.split('/')[1] === val.routerPath?.split('/')[1]
-                        // val.routerPath + "/[id]" === pathname?.split('/')[1]
-                          ? "ui-active"
+                        pathname?.split("/")[1] ===
+                        val.routerPath?.split("/")[1]
+                          ? // val.routerPath + "/[id]" === pathname?.split('/')[1]
+                            "ui-active"
                           : undefined
                       }
                     >
@@ -391,7 +401,10 @@ const HeaderMenuContent = ({ float = "" }) => {
         <a
           href="#"
           className={
-            pages.some((page) => page.routerPath?.split('/')[1] === pathname?.split('/')[1])
+            pages.some(
+              (page) =>
+                page.routerPath?.split("/")[1] === pathname?.split("/")[1]
+            )
               ? "ui-active"
               : undefined
           }
@@ -405,7 +418,9 @@ const HeaderMenuContent = ({ float = "" }) => {
               <Link
                 to={item.routerPath}
                 className={
-                  pathname?.split('/')[1] === item.routerPath?.split('/')[1] ? "ui-active" : undefined
+                  pathname?.split("/")[1] === item.routerPath?.split("/")[1]
+                    ? "ui-active"
+                    : undefined
                 }
               >
                 {item.name}
@@ -422,8 +437,8 @@ const HeaderMenuContent = ({ float = "" }) => {
           className={
             blog.some(
               (page) =>
-                page.routerPath?.split('/')[1] === pathname?.split('/')[1] 
-                // page.routerPath?.split('/')[1] + "/[id]" === pathname?.split('/')[1]
+                page.routerPath?.split("/")[1] === pathname?.split("/")[1]
+              // page.routerPath?.split('/')[1] + "/[id]" === pathname?.split('/')[1]
             )
               ? "ui-active"
               : undefined
@@ -438,9 +453,9 @@ const HeaderMenuContent = ({ float = "" }) => {
               <Link
                 to={item.routerPath}
                 className={
-                  pathname?.split('/')[1] === item.routerPath?.split('/')[1] 
-                  // item.routerPath + "/[id]" === pathname?.split('/')[1]
-                    ? "ui-active"
+                  pathname?.split("/")[1] === item.routerPath?.split("/")[1]
+                    ? // item.routerPath + "/[id]" === pathname?.split('/')[1]
+                      "ui-active"
                     : undefined
                 }
               >
@@ -466,12 +481,11 @@ const HeaderMenuContent = ({ float = "" }) => {
         <div className="dropdown">
           <a className="btn dropdown-toggle" href="#" data-bs-toggle="dropdown">
             <img
-             
               className="rounded-circle"
               src="/assets/images/team/e1.png"
               alt="e1.png"
             />
-            <span className="dn-1199 ms-1">Phát Nguyễn</span>
+            <span className="dn-1199 ms-1">{fullname}</span>
           </a>
           <div className="dropdown-menu">
             <MyAccount />

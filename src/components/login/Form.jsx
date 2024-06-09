@@ -1,8 +1,55 @@
 import { Link } from "react-router-dom";
+import axiosInstance from "@/config/axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const navigate = useNavigate();
+  const [loginForm, setLoginForm] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axiosInstance.post("Accounts/login", loginForm);
+      if (response.data.success === false) {
+        alert("Invalid username or password");
+      } else {
+        const userInfo = {
+          isLoggedIn: true,
+          email: response.data.data.userResult.username,
+          fullname: response.data.data.userResult.fullname,
+          phone: response.data.data.userResult.phone,
+          accessToken: response.data.data.token.accessToken,
+          isAdmin: response.data.data.userResult.isAdmin,
+        };
+
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        localStorage.setItem("isLoggedIn", true);
+        // localStorage.setItem("email", response.data.data.userResult.username);
+        // localStorage.setItem("fullname", response.data.data.userResult.fullname);
+        // localStorage.setItem("phone", response.data.data.userResult.phone);
+        // localStorage.setItem(
+        //   "accessToken",
+        //   response.data.data.token.accessToken
+        // );
+        // localStorage.setItem("isAdmin", response.data.data.userResult.isAdmin);
+        console.log(response);
+        if (response.data.isAdmin === true) {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <form action="#">
+    <form onSubmit={handleSubmit}>
       <div className="heading text-center">
         <h3>Login to your account</h3>
         <p className="text-center">
@@ -18,7 +65,11 @@ const Form = () => {
         <input
           type="text"
           className="form-control"
-          required
+          value={loginForm.username}
+          onChange={(e) =>
+            setLoginForm({ ...loginForm, username: e.target.value })
+          }
+          required={!loginForm.username || loginForm.username === ""}
           placeholder="Username Or Email"
         />
         <div className="input-group-prepend">
@@ -33,7 +84,11 @@ const Form = () => {
         <input
           type="password"
           className="form-control"
-          required
+          value={loginForm.password}
+          onChange={(e) =>
+            setLoginForm({ ...loginForm, password: e.target.value })
+          }
+          required={!loginForm.password || loginForm.password === ""}
           placeholder="Password"
         />
         <div className="input-group-prepend">
@@ -45,18 +100,8 @@ const Form = () => {
       {/* End .input-group */}
 
       <div className="form-group form-check custom-checkbox mb-3">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          value=""
-         
-        />
-        <label
-          className="form-check-label form-check-label"
-        
-        >
-          Remember me
-        </label>
+        <input className="form-check-input" type="checkbox" value="" />
+        <label className="form-check-label form-check-label">Remember me</label>
 
         <a className="btn-fpswd float-end" href="#">
           Forgot password?

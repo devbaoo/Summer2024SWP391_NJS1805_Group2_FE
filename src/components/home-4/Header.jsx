@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HeaderMenuContent from "../common/header/HeaderMenuContent";
-
+import HeaderMenuContent1 from "../common/header/dashboard/HeaderMenuContent";
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const changeBackground = () => {
     if (window.scrollY >= 95) {
       setNavbar(true);
@@ -14,6 +14,8 @@ const Header = () => {
   };
 
   useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    setIsLoggedIn(isLoggedIn === "true");
     window.addEventListener("scroll", changeBackground);
   }, []);
 
@@ -41,9 +43,7 @@ const Header = () => {
         </Link>
         {/* site logo brand */}
 
-        <nav>
-          <HeaderMenuContent />
-        </nav>
+        <nav>{isLoggedIn ? <HeaderMenuContent1 /> : <HeaderMenuContent />}</nav>
         {/* End .navbar */}
       </div>
     </header>
