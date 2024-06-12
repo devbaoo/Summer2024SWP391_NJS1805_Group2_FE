@@ -30,9 +30,9 @@ const FormLogin = () => {
         // const roles = response.data.roles;
         // if (roles[0] === 'Admin') {
         //     navigate('/account-management');
-        // } else if (roles[0] === 'Store_Manager') {
+        // } else if (roles[0] === 'Customer') {
         //     navigate('/employee-managementy');
-        // } else if (roles[0] === 'Brand_Manager') {
+        // } else if (roles[0] === 'Store_Owner') {
         //     navigate('/dashboard');
         // }
         navigate("/dashboard");
@@ -45,7 +45,7 @@ const FormLogin = () => {
     <div className="flex flex-col items-center mt-10 gap-8 px-4 sm:px-0">
       {/* header title form */}
       <div className="flex flex-col items-center text-center">
-        <h1 className="sm:h-20 w-full text-3xl">SuaMe 88</h1>
+        <h1 className="sm:h-20 w-full text-3xl">MomMilk</h1>
         <h3 className="text-2xl sm:text-4xl font-bold mt-4">Login</h3>
       </div>
       <form
@@ -67,7 +67,7 @@ const FormLogin = () => {
             type="email"
             id="email"
             name="email"
-            placeholder="Nhập Email...."
+            placeholder="Enter your email"
             className="mt-2 p-2 border-2 border-pink-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 w-full"
           />
         </div>
@@ -85,7 +85,7 @@ const FormLogin = () => {
             type="password"
             id="password"
             name="password"
-            placeholder="Nhập mật khẩu...."
+            placeholder="Enter your password"
             className="mt-2 p-2 border-2 border-pink-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 w-full"
           />
         </div>
@@ -94,13 +94,13 @@ const FormLogin = () => {
             type="submit"
             className="bg-pink-200 p-3 rounded-xl text-black font-bold hover:bg-pink-600 cursor-pointer w-full sm:w-48"
           >
-            {isLoading ? "Loading..." : "Đăng nhập"}
+            {isLoading ? "Loading..." : "Login"}
           </button>
           <Link
             to="#"
             className="text-red-600 underline font-normal text-base mt-2 sm:mt-0 w-full sm:w-44"
           >
-            Quên mật khẩu?
+            Forgot password?
           </Link>
         </div>
       </form>
@@ -108,7 +108,7 @@ const FormLogin = () => {
         to={"/register"}
         className="text-blue-600 underline font-normal text-base mt-2 sm:mt-0"
       >
-        Bạn chưa có tài khoản? Đăng kí ngay
+        Do not have an account? Register now
       </Link>
     </div>
   );
