@@ -1,9 +1,7 @@
-import React from 'react'
+// import React from 'react'
 
 const StoreDashboard = () => {
-    return (
-        <div>StoreDashboard</div>
-    )
-}
+  return <div>StoreDashboard</div>;
+};
 
-export default StoreDashboard
+export default StoreDashboard;
