@@ -1,30 +1,37 @@
-# React + TypeScript + Vite
+# MilkForMomAndBabies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Mô tả
+Đây là một dự án môn SWP391 của tụi mình, thành viên trong dự án bao gồm:
+   -   Cao Khắc Bảo ( Leader )
+   -   Phan Văn Hùng
+   -   Nguyễn Tăng Tài Phát
+   -   Châu Phi Trường
+   -   Nguyễn Vũ Nhật Minh
+     
+MilkForMomAndBabies là một nền tảng thương mại điện tử chuyên cung cấp các sản phẩm sữa cho mẹ bầu và em bé. Nền tảng của tụi mình giúp người dùng dễ dàng tìm kiếm, so sánh và mua các loại sữa phù hợp với nhu cầu.
 
-Currently, two official plugins are available:
+## Document:
+https://docs.google.com/document/d/1CAJtbUC1eurAHFmCMFc8Ab8NJFtT9-Zb/edit
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tính năng chính
+- **Tìm kiếm sản phẩm**: Người dùng có thể dễ dàng tìm kiếm các sản phẩm sữa theo nhu cầu.
+- **Đánh giá và nhận xét**: Xem đánh giá và nhận xét từ những người dùng khác.
+- **Giỏ hàng và thanh toán**: Hỗ trợ giỏ hàng và thanh toán trực tuyến an toàn.
+- **Chính sách đổi trả**: Chính sách đổi trả minh bạch và dễ dàng.
 
-## Expanding the ESLint configuration
+## Công nghệ sử dụng
+- **Front-end**: React.js, Vitejs
+- **Back-end**: C#, API Swagger
+- **Cơ sở dữ liệu**: MySQL, Firebase
+- **Authentication**: JSON Web Tokens (JWT)
+- **Triển khai**: Firebase, Azure
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Thông tin liên hệ
+Nếu bạn có bất kỳ câu hỏi hoặc góp ý nào, vui lòng liên hệ với leader dự án qua email: baockse172296@fpt.edu.vn
 
-- Configure the top-level `parserOptions` property like this:
+## And More
+Bọn mình chỉ là những con gà tập tành làm dự án đầu tay của mình, hy vọng mọi thứ sẽ thuận lợi và cả nhóm sẽ cùng nhau cố gắng để đạt kết quả tốt <3
+Thanks for reading!!!
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
