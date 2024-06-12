@@ -26,7 +26,7 @@ const FormLogin = () => {
   const onSubmit = (data: FormLoginValues) => {
     dispatch(loginUser(data))
       .unwrap()
-      .then((response) => {
+      .then(() => {
         // const roles = response.data.roles;
         // if (roles[0] === 'Admin') {
         //     navigate('/account-management');
