@@ -54,7 +54,7 @@ const FormRegister = () => {
     <div className="flex flex-col items-center mt-10 gap-8 px-4 sm:px-0">
       {/* header title form */}
       <div className="flex flex-col items-center text-center">
-        <h1 className="sm:h-20 w-full text-3xl">MomMilk</h1>
+        <h1 className="sm:h-20 w-full text-3xl">Mommilk</h1>
         <h3 className="text-2xl sm:text-4xl font-bold mt-4">Register</h3>
       </div>
       <form
@@ -76,7 +76,7 @@ const FormRegister = () => {
             type="text"
             id="name"
             name="name"
-            placeholder="Nhập tên...."
+            placeholder="Enter your name..."
             className="mt-2 p-2 border-2 border-pink-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 w-full"
           />
         </div>
@@ -94,7 +94,7 @@ const FormRegister = () => {
             type="email"
             id="email"
             name="email"
-            placeholder="Nhập Email...."
+            placeholder="Enter your email..."
             className="mt-2 p-2 border-2 border-pink-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 w-full"
           />
         </div>
@@ -112,7 +112,7 @@ const FormRegister = () => {
             type="text"
             id="phone"
             name="phone"
-            placeholder="Nhập số điện thoại...."
+            placeholder="Enter your phonenumber..."
             className="mt-2 p-2 border-2 border-pink-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 w-full"
           />
         </div>
@@ -130,7 +130,7 @@ const FormRegister = () => {
             type="password"
             id="password"
             name="password"
-            placeholder="Nhập mật khẩu...."
+            placeholder="Enter your password..."
             className="mt-2 p-2 border-2 border-pink-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 w-full"
           />
         </div>
@@ -157,7 +157,7 @@ const FormRegister = () => {
             type="password"
             id="confirmPassword"
             name="confirmPassword"
-            placeholder="Xác nhận mật khẩu...."
+            placeholder="Confirm your password"
             className="mt-2 p-2 border-2 border-pink-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 w-full"
           />
         </div>
@@ -166,7 +166,7 @@ const FormRegister = () => {
             type="submit"
             className="bg-pink-200 p-3 rounded-xl text-black font-bold hover:bg-pink-600 cursor-pointer w-full"
           >
-            {isLoading ? "Loading..." : "Đăng ký"}
+            {isLoading ? "Loading..." : "Register"}
           </button>
         </div>
       </form>
@@ -174,7 +174,7 @@ const FormRegister = () => {
         to={"/login"}
         className="text-blue-600 underline font-normal text-base mt-2 sm:mt-0"
       >
-        Bạn đã có tài khoản? Đăng nhập
+        Do you have account? Login
       </Link>
     </div>
   );

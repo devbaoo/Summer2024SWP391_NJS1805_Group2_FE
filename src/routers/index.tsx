@@ -2,6 +2,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useAppSelector } from '../service/store/store';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import Dashboard from '../pages/Dashboard';
+import CategoryManagement from '../pages/CategoryManagement';
 
 const AppRouter = () => {
     const token = sessionStorage.getItem('quickServeToken');
@@ -23,6 +25,8 @@ const AppRouter = () => {
                         element={<Navigate to="/login" replace />}
                     />
                     <Route path='/register' element={<Register />} />
+                    <Route path='/dashboard' element={<Dashboard />} />
+                    <Route path='/category-management' element={<CategoryManagement />} />
 
                 </>
             ) : <>
