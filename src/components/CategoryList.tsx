@@ -38,7 +38,8 @@ const CategoryList = () => {
   const [onPopupCategoryDetail, setOnPopupCategoryDetail] =
     useState<boolean>(false);
   const [openPopupRename, setOpenPopupRename] = useState<boolean>(false);
-  const [selectedCateId, setSelectedCateId] = useState<string | null>(null);
+  const [setSelectedCateId] = useState<string | null>(null);
+  // const [selectedCateId, setSelectedCateId] = useState<string | null>(null);
 
   // useEffect(() => {
   //     dispatch(getAllCategories());
