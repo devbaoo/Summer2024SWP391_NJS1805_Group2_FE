@@ -38,7 +38,7 @@ const CategoryList = () => {
   const [onPopupCategoryDetail, setOnPopupCategoryDetail] =
     useState<boolean>(false);
   const [openPopupRename, setOpenPopupRename] = useState<boolean>(false);
-  const [setSelectedCateId] = useState<string | null>(null);
+
   // const [selectedCateId, setSelectedCateId] = useState<string | null>(null);
 
   // useEffect(() => {
@@ -64,8 +64,8 @@ const CategoryList = () => {
     setOnPopupCategoryDetail(true);
   };
 
-  const handleOpenPopupRenameCategory = (id: string) => {
-    setSelectedCateId(id);
+  const handleOpenPopupRenameCategory = () => {
+    // setSelectedCateId(id);
     setOpenPopupRename(true);
   };
 
