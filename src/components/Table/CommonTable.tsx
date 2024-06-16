@@ -85,7 +85,7 @@ const CommonTable = <T extends MRT_RowData>({
                       <Typography fontWeight={700} color={"black"}>
                         {flexRender(
                           header.column.columnDef.Header ??
-                            header.column.columnDef.header,
+                          header.column.columnDef.header,
                           header.getContext()
                         )}
                       </Typography>

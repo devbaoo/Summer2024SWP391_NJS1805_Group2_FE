@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useAppDispatch } from "../service/store/store";
+import { useAppDispatch } from "../../service/store/store";
 import { useState } from "react";
-import { registerUser } from "../service/features/authSlice";
+import { registerUser } from "../../service/features/authSlice";
 
 type FormRegisterProps = {
   name: string;

@@ -1,10 +1,22 @@
-// SidebarComponent.tsx
-import { Link, useLocation } from 'react-router-dom';
-import menu from './listMenu';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import menu from '../listMenu';
+import { ArrowRightStartOnRectangleIcon } from '@heroicons/react/16/solid';
+import { logoutUser } from '../../service/features/authSlice';
+import { useAppDispatch } from '../../service/store/store';
 
 const SidebarComponent = () => {
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const location = useLocation();
     const activeMenuItem = menu.storeManagementMenu.find(item => item.url === location.pathname);
+
+    const handleLogout = (data: any | undefined) => {
+        dispatch(logoutUser(data))
+            .unwrap()
+            .then(() => {
+                navigate('/login');
+            });
+    };
 
     return (
         <div className='flex'>
@@ -23,6 +35,15 @@ const SidebarComponent = () => {
                             </li>
                         </Link>
                     ))}
+                    <li>
+                        <button
+                            onClick={handleLogout}
+                            className='ml-4 mb-2 gap-6 rounded hover:shadow hover:bg-pink-300 py-4 px-2 cursor-pointer flex items-center'
+                        >
+                            <ArrowRightStartOnRectangleIcon className='h-5 w-5 mr-2 text-pink-500' /> {/* Optional icon */}
+                            <span>Logout</span>
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>

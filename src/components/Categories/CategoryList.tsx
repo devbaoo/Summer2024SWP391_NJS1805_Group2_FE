@@ -1,13 +1,14 @@
 import { MRT_ColumnDef } from "material-react-table";
-import { ICategory } from "../models/Category";
-import { useAppDispatch, useAppSelector } from "../service/store/store";
 import { useEffect, useState } from "react";
-import { getAllCategories } from "../service/features/categorySlice";
 import { Button, Stack } from "@mui/material";
-import CommonTable from "./Table/CommonTable";
-import PopupCreateCategory from "./Popup/PopupCreateCategory";
-import PopupCategoryDetail from "./Popup/PopupCategoryDetail";
-import PopupRenameCategory from "./Popup/PopupRenameCategory";
+import { ICategory } from "../../models/Category";
+import { useAppDispatch, useAppSelector } from "../../service/store/store";
+import { getAllCategories } from "../../service/features/categorySlice";
+import CommonTable from "../Table/CommonTable";
+import PopupCreateCategory from "../Popup/PopupCreateCategory";
+import PopupCategoryDetail from "../Popup/PopupCategoryDetail";
+import PopupRenameCategory from "../Popup/PopupRenameCategory";
+
 
 const columns: MRT_ColumnDef<ICategory>[] = [
   {
@@ -39,7 +40,7 @@ const CategoryList = () => {
     useState<boolean>(false);
   const [openPopupRename, setOpenPopupRename] = useState<boolean>(false);
 
-  // const [selectedCateId, setSelectedCateId] = useState<string | null>(null);
+  const [selectedCateId, setSelectedCateId] = useState<string | null>(null);
 
   // useEffect(() => {
   //     dispatch(getAllCategories());
@@ -64,8 +65,11 @@ const CategoryList = () => {
     setOnPopupCategoryDetail(true);
   };
 
-  const handleOpenPopupRenameCategory = () => {
-    // setSelectedCateId(id);
+  const handleOpenPopupRenameCategory = (id: string) => {
+    if (!selectedCateId) {
+      return
+    }
+    setSelectedCateId(id);
     setOpenPopupRename(true);
   };
 
@@ -99,7 +103,7 @@ const CategoryList = () => {
             cate={cateData}
             onPopupDetail={onPopupCategoryDetail}
             setOnPopupDetail={setOnPopupCategoryDetail}
-            onRename={() => handleOpenPopupRenameCategory(cateData.id)}
+            onUpdate={() => handleOpenPopupRenameCategory(cateData.id)}
           />
           <PopupRenameCategory
             onClosePopupDetail={() => setOnPopupCategoryDetail(false)}
@@ -107,6 +111,10 @@ const CategoryList = () => {
             closePopup={() => setOpenPopupRename(false)}
             name={cateData?.name ?? ""}
             cateId={cateData.id}
+            targetAudience={cateData.targetAudience}
+            ageRange={cateData.ageRange}
+            milkType={cateData.milkType}
+            icon={cateData.icon}
           />
         </>
       )}

@@ -50,41 +50,32 @@ export const createCategory = createAsyncThunk<ICategoryCreate, Object>(
                     },
                 },
             );
-            if (response.data.success === true) {
-                toast.success(`${response.data.message}`);
-
-            } else {
-                toast.error(`${response.data.message}`);
-            }
+            toast.success('Create Successfully!');
             return response.data.data;
         } catch (error: any) {
-            toast.error(`${error.response.data.message}`);
+            toast.error('Create Failed!');
             return thunkAPI.rejectWithValue(error.response.data);
         }
     },
 );
-export const renameCategory = createAsyncThunk<ICategory, ICategoryRename>(
-    'categories/renameCategory',
-    async ({ id, name }, thunkAPI) => {
+export const updateCategory = createAsyncThunk<ICategory, ICategoryRename>(
+    'categories/updateCategory',
+    async ({ id, name, targetAudience, ageRange, milkType, icon }, thunkAPI) => {
         try {
             const token = sessionStorage.getItem('suame88');
             const response = await axios.put(
                 `${updateCategoryEndpoint}/${id}`,
-                { id, name },
+                { id, name, targetAudience, ageRange, milkType, icon },
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 },
             );
-            if (response.data.success === true) {
-                toast.success('Change Name Successfully!');
-            } else {
-                toast.error(`${response.data.message}`);
-            }
+            toast.success('Update Successfully!');
             return response.data;
         } catch (error: any) {
-            toast.error(`${error.response.data.message}`);
+            toast.error('Update Failed!');
             return thunkAPI.rejectWithValue(error.response.data);
         }
     },
@@ -124,14 +115,14 @@ export const categorySlice = createSlice({
         });
 
 
-        builder.addCase(renameCategory.pending, (state) => {
+        builder.addCase(updateCategory.pending, (state) => {
             state.loading = true;
         });
-        builder.addCase(renameCategory.fulfilled, (state) => {
+        builder.addCase(updateCategory.fulfilled, (state) => {
             state.loading = false;
             state.success = true;
         });
-        builder.addCase(renameCategory.rejected, (state, action) => {
+        builder.addCase(updateCategory.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload as string[];
         });
