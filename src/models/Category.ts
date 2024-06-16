@@ -12,4 +12,8 @@ export interface ICategoryCreate {
 export interface ICategoryRename {
     id: string;
     name: string;
+    targetAudience: string;
+    ageRange: string;
+    milkType: string;
+    icon: string;
 }

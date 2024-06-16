@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { loginUser } from "../service/features/authSlice";
-import { useAppDispatch } from "../service/store/store";
+import { loginUser } from "../../service/features/authSlice";
+import { useAppDispatch } from "../../service/store/store";
 
 type FormLoginValues = {
   email: string;
@@ -24,20 +24,25 @@ const FormLogin = () => {
   const { errors } = formState;
 
   const onSubmit = (data: FormLoginValues) => {
+    setIsLoading(true);
     dispatch(loginUser(data))
       .unwrap()
-      .then(() => {
-        // const roles = response.data.roles;
-        // if (roles[0] === 'Admin') {
-        //     navigate('/account-management');
-        // } else if (roles[0] === 'Store_Manager') {
-        //     navigate('/employee-management');
-        // } else if (roles[0] === 'Brand_Manager') {
-        //     navigate('/dashboard');
-        // }
-        navigate("/dashboard");
+      .then((response) => {
+        const role = response.data.userResult.role;
+        console.log(role);
+
+        if (role === "Admin") {
+          navigate("/account-management");
+        } else if (role === "StoreOwner") {
+          navigate("/dashboard");
+        } else if (role === "Customer") {
+          navigate("/home");
+        }
       })
-      .catch((error) => console.log(error))
+      .catch((error) => {
+        console.log(error);
+        // Handle error if needed
+      })
       .finally(() => setIsLoading(false));
   };
 

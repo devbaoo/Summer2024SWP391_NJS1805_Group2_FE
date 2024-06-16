@@ -11,7 +11,7 @@ import { XMarkIcon } from "@heroicons/react/16/solid";
 import { useAppDispatch } from "../../service/store/store";
 import {
   getAllCategories,
-  renameCategory,
+  updateCategory,
 } from "../../service/features/categorySlice";
 
 type PopupRenameCategoryProps = {
@@ -20,11 +20,19 @@ type PopupRenameCategoryProps = {
   onClosePopupDetail: () => void;
   name: string;
   cateId: string | undefined;
+  targetAudience: string;
+  ageRange: string;
+  milkType: string;
+  icon: string;
 };
 
 type FormRenameCategoryValues = {
   id: string;
   name: string;
+  targetAudience: string;
+  ageRange: string;
+  milkType: string;
+  icon: string;
 };
 
 const PopupRenameCategory: React.FC<PopupRenameCategoryProps> = ({
@@ -33,6 +41,11 @@ const PopupRenameCategory: React.FC<PopupRenameCategoryProps> = ({
   onClosePopupDetail,
   name,
   cateId,
+  targetAudience,
+  ageRange,
+  milkType,
+  icon,
+
 }) => {
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
@@ -43,19 +56,19 @@ const PopupRenameCategory: React.FC<PopupRenameCategoryProps> = ({
     reset,
     formState: { errors },
   } = useForm<FormRenameCategoryValues>({
-    defaultValues: { id: cateId, name },
+    defaultValues: { id: cateId, name, targetAudience, ageRange, milkType, icon },
   });
   const onSubmit = (data: FormRenameCategoryValues) => {
     setIsLoading(true);
-    dispatch(renameCategory(data))
+    dispatch(updateCategory(data))
       .unwrap()
       .then(() => {
         dispatch(getAllCategories());
         closePopup();
         onClosePopupDetail();
-        reset({ id: undefined, name: "" });
+        reset({ id: undefined, name: "", targetAudience: "", ageRange: "", milkType: "", icon: "" });
       })
-      .catch((error) => console.log(error))
+      .catch((error: any) => console.log(error))
       .finally(() => setIsLoading(false));
   };
   useEffect(() => {
@@ -104,6 +117,78 @@ const PopupRenameCategory: React.FC<PopupRenameCategoryProps> = ({
               {errors.name && (
                 <p className="text-red-500 text-xs mt-2">
                   * {errors.name.message}
+                </p>
+              )}
+              <label
+                htmlFor="targetAudience"
+                className="block text-sm font-medium text-gray-700 mt-2"
+              >
+                Target Audience
+              </label>
+              <input
+                {...register("targetAudience")}
+                type="text"
+                name="targetAudience"
+                id="targetAudience"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
+              />
+              {errors.targetAudience && (
+                <p className="text-red-500 text-xs mt-2">
+                  * {errors.targetAudience.message}
+                </p>
+              )}
+              <label
+                htmlFor="ageRange"
+                className="block text-sm font-medium text-gray-700 mt-2"
+              >
+                Age Range
+              </label>
+              <input
+                {...register("ageRange")}
+                type="text"
+                name="ageRange"
+                id="ageRange"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
+              />
+              {errors.ageRange && (
+                <p className="text-red-500 text-xs mt-2">
+                  * {errors.ageRange.message}
+                </p>
+              )}
+              <label
+                htmlFor="milkType"
+                className="block text-sm font-medium text-gray-700 mt-2"
+              >
+                Milk Type
+              </label>
+              <input
+                {...register("milkType")}
+                type="text"
+                name="milkType"
+                id="milkType"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
+              />
+              {errors.milkType && (
+                <p className="text-red-500 text-xs mt-2">
+                  * {errors.milkType.message}
+                </p>
+              )}
+              <label
+                htmlFor="icon"
+                className="block text-sm font-medium text-gray-700 mt-2"
+              >
+                Icon
+              </label>
+              <input
+                {...register("icon")}
+                type="text"
+                name="icon"
+                id="icon"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
+              />
+              {errors.icon && (
+                <p className="text-red-500 text-xs mt-2">
+                  * {errors.icon.message}
                 </p>
               )}
             </div>

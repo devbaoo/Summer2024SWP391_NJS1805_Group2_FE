@@ -1,17 +1,16 @@
 import { XMarkIcon } from '@heroicons/react/16/solid';
-import { ICategory } from '../../models/Category';
+import { IProduct } from '../../models/Produdct';
 
-type PopupCategoryDetailProps = {
-    cate: ICategory | null;
+type PopupProductDetailProps = {
+    product: IProduct | null;
     onPopupDetail: boolean;
     setOnPopupDetail: React.Dispatch<React.SetStateAction<boolean>>;
-    onUpdate: () => void;
 }
-const PopupCategoryDetail: React.FC<PopupCategoryDetailProps> = ({
-    cate,
+
+const PopupProductDetail: React.FC<PopupProductDetailProps> = ({
+    product,
     onPopupDetail,
     setOnPopupDetail,
-    onUpdate,
 }) => {
     return (
         <div
@@ -41,7 +40,7 @@ const PopupCategoryDetail: React.FC<PopupCategoryDetailProps> = ({
                                         className="text-lg leading-6 w-full font-medium text-gray-900"
                                         id="modal-title"
                                     >
-                                        Category Detail
+                                        Product Detail
                                     </h3>
                                     <XMarkIcon
                                         width={16}
@@ -58,31 +57,47 @@ const PopupCategoryDetail: React.FC<PopupCategoryDetailProps> = ({
                                         </span>
                                     </div>
                                     <div>
-                                        <span>{cate?.name}</span>
+                                        <span>{product?.name}</span>
                                     </div>
                                     <div>
                                         <span className="text-sm text-back-500 font-bold">
-                                            Target Audience
+                                            Origin
                                         </span>
                                     </div>
                                     <div>
-                                        <span>{cate?.targetAudience}</span>
+                                        <span>{product?.origin}</span>
                                     </div>
                                     <div>
                                         <span className="text-sm text-back-500 font-bold">
-                                            Age Range
+                                            Brand
                                         </span>
                                     </div>
                                     <div>
-                                        <span>{cate?.ageRange}</span>
+                                        <span>{product?.brand}</span>
                                     </div>
                                     <div>
                                         <span className="text-sm text-back-500 font-bold">
-                                            Milk Type
+                                            Ingredient
                                         </span>
                                     </div>
                                     <div>
-                                        <span>{cate?.milkType}</span>
+                                        <span>{product?.ingredient}</span>
+                                    </div>
+                                    <div>
+                                        <span className="text-sm text-back-500 font-bold">
+                                            Capacity
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>{product?.capacity}</span>
+                                    </div>
+                                    <div>
+                                        <span className="text-sm text-back-500 font-bold">
+                                            Price
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>{product?.price}</span>
                                     </div>
                                     <div>
                                         <span className="text-sm text-back-500 font-bold">
@@ -91,8 +106,7 @@ const PopupCategoryDetail: React.FC<PopupCategoryDetailProps> = ({
                                     </div>
                                     <div className="w-auto flex gap-4">
                                         <button
-                                            onClick={onUpdate}
-                                            className="text-xs w-24 border border-blue-500p-1 bg-blue-500 text-white-900 font-bold rounded-lg"
+                                            className="text-xs w-24 border border-blue-500p-1 bg-blue-500 text-white font-bold rounded-lg"
                                         >
                                             Update
                                         </button>
@@ -112,4 +126,4 @@ const PopupCategoryDetail: React.FC<PopupCategoryDetailProps> = ({
     );
 };
 
-export default PopupCategoryDetail;
+export default PopupProductDetail;

@@ -28,8 +28,9 @@ export const registerUser = createAsyncThunk<IUser, Object>(
       toast.success("Register Successful !");
       return response.data;
     } catch (error: any) {
+      toast.error('Register Failed !');
       if (error.response) {
-        toast.error(`${error.response.data?.errorMessages}`);
+        toast.error('Register Failed !');
         return thunkAPI.rejectWithValue({
           error: error.response?.data?.errorMessages,
         });
@@ -44,16 +45,16 @@ export const loginUser = createAsyncThunk<ILoginResponse, ILogin>(
     try {
       const response = await axios.post(loginEndpoint, data);
       if (response.data.success) {
-        const token = response.data.data.accessToken;
+        const token = response.data.data.token.accessToken;
         sessionStorage.setItem("suame88", token);
         toast.success("Login Successful !");
         return response.data;
       } else {
-        toast.error(`${response.data.message}`);
+        toast.error("Login Failed !");
         return thunkAPI.rejectWithValue(response.data);
       }
     } catch (error: any) {
-      toast.error(`${error.response.data.message}`);
+      toast.error("Login Failed !");
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }

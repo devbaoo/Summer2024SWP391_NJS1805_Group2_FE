@@ -16,8 +16,8 @@ interface IToken {
 interface IUserResult {
     userID: string;
     email: string;
-    roles: string;
-    fullname: string;
+    role: string;
+    name: string;
     phone: string;
 }
 export interface ILogin {

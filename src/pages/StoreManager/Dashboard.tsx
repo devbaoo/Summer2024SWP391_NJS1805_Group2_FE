@@ -1,6 +1,6 @@
 import { FaDatabase } from "react-icons/fa";
-import SidebarComponent from "../components/Sidebar";
-import StoreDashboard from "../components/StoreDashboard";
+import StoreDashboard from "../../components/Dashboard/StoreDashboard";
+import SidebarComponent from "../../components/Layout/Sidebar";
 
 const Dashboard = () => {
   return (
