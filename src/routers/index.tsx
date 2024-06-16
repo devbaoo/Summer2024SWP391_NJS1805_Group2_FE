@@ -12,8 +12,9 @@ const AppRouter = () => {
     const token = sessionStorage.getItem('suame88');
     const { account } = useAppSelector((state) => state.auth);
 
-    const isStoreOwner = account?.userResult.role.includes('StoreOwner');
-    const isCustomer = account?.userResult.role.includes('Customer');
+    // Check if account and userResult are defined before accessing role
+    const isStoreOwner = account && account.userResult && account.userResult.role.includes('StoreOwner');
+    const isCustomer = account && account.userResult && account.userResult.role.includes('Customer');
 
     if (!token || !account) {
         return (
@@ -42,6 +43,7 @@ const AppRouter = () => {
                     <Route path="/product/:id" element={<ProductDetails />} />
                 </>
             )}
+            {/* Fallback route if none of the above matches */}
             <Route path="*" element={<Navigate to={isCustomer ? "/home" : "/dashboard"} replace />} />
         </Routes>
     );

@@ -9,6 +9,7 @@ type FormRegisterProps = {
   email: string;
   password: string;
   phone: string;
+  role: string;
   confirmPassword: string;
 };
 
@@ -24,6 +25,7 @@ const FormRegister = () => {
       password: "",
       phone: "",
       confirmPassword: "",
+      role: "Customer",
     },
   });
   const { register, handleSubmit, formState, reset } = form;
@@ -33,22 +35,29 @@ const FormRegister = () => {
     setIsLoading(true);
     dispatch(registerUser(data))
       .unwrap()
-      .then(() => {
-        reset({
-          name: "",
-          email: "",
-          password: "",
-          phone: "",
-          confirmPassword: "",
-        });
-        setIsLoading(false);
-        navigate("/login");
+      .then((response) => {
+        if (response) {
+          // Assuming response contains expected data structure
+          reset({
+            name: "",
+            email: "",
+            password: "",
+            phone: "",
+            confirmPassword: "",
+          });
+          setIsLoading(false);
+          navigate("/login");
+        } else {
+          console.error("Registration failed: Response data is undefined");
+          setIsLoading(false);
+        }
       })
       .catch((error) => {
         console.error("Registration failed:", error);
         setIsLoading(false);
       });
   };
+
 
   return (
     <div className="flex flex-col items-center mt-10 gap-8 px-4 sm:px-0">
