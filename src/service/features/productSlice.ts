@@ -1,12 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { getAllProductsEndpoint, getProductByIdEndpoint } from "../api/apiConfig";
-import { IProduct } from "../../models/Produdct";
+import { createProductEndpoint, getAllProductsEndpoint, getProductByIdEndpoint } from "../api/apiConfig";
+import { IProduct, IProductCreate } from "../../models/Produdct";
+import { toast } from "react-toastify";
 
 type ProductState = {
     loading: boolean;
     products: IProduct[] | null;
     product: IProduct | null;
+    createProduct: IProductCreate | null;
     error: string | unknown;
     success: boolean;
 };
@@ -15,6 +17,7 @@ const initialState: ProductState = {
     loading: false,
     products: null,
     product: null,
+    createProduct: null,
     error: null,
     success: false,
 };
@@ -56,6 +59,29 @@ export const getProductById = createAsyncThunk<IProduct, { id: number }>(
     },
 );
 
+export const createProduct = createAsyncThunk<IProductCreate, Object>(
+    'products/createProduct',
+    async (product, thunkAPI) => {
+        try {
+            const token = sessionStorage.getItem('suame88');
+            const response = await axios.post(
+                createProductEndpoint,
+                product,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                },
+            );
+            toast.success('Create Successfully!');
+            return response.data.data;
+        } catch (error: any) {
+            toast.error('Create Failed!');
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    },
+);
+
 export const productSlice = createSlice({
     name: 'products',
     initialState,
@@ -88,6 +114,20 @@ export const productSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         });
+
+        builder.addCase(createProduct.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(createProduct.fulfilled, (state, action) => {
+            state.loading = false;
+            state.createProduct = action.payload;
+            state.success = true;
+        });
+        builder.addCase(createProduct.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        });
+
     },
 });
 

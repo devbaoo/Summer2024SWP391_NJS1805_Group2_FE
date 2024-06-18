@@ -16,3 +16,21 @@ export interface IProduct {
     status: string;
     productImages: any[];
 }
+export interface IProductCreate {
+    id: number;
+    name: string;
+    origin: string;
+    brand: string;
+    ingredient: string;
+    sweetLevel: string;
+    flavour: string;
+    sample: string;
+    capacity: string;
+    description: string;
+    price: number;
+    quantity: number;
+    expireAt: string;
+    storeId: number;
+    createAt: string;
+    status: string;
+}
