@@ -6,10 +6,6 @@ const listMenu = {
             url: '/dashboard',
         },
         {
-            title: 'Account Management',
-            url: '/account-management',
-        },
-        {
             title: 'Product Management',
             url: '/product-management',
         },

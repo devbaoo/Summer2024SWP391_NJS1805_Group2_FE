@@ -19,6 +19,7 @@ interface IUserResult {
     role: string;
     name: string;
     phone: string;
+    storeId: string;
 }
 export interface ILogin {
     email: string;

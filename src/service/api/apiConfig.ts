@@ -12,3 +12,5 @@ export const updateCategoryEndpoint = `${BASE_URL}/categories`
 //getAll product
 export const getAllProductsEndpoint = `${BASE_URL}/products`
 export const getProductByIdEndpoint = `${BASE_URL}/products`
+export const createProductEndpoint = `${BASE_URL}/products`
+export const updateProductEndpoint = `${BASE_URL}/products`

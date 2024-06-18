@@ -6,6 +6,7 @@ import CommonTable from "../Table/CommonTable";
 import { getAllProducts } from "../../service/features/productSlice";
 import PopupProductDetail from "../Popup/PopupProductDetail";
 import { IProduct } from "../../models/Produdct";
+import PopupCreateProduct from "../Popup/PopupCreateProduct";
 
 const columns: MRT_ColumnDef<IProduct>[] = [
     {
@@ -41,6 +42,9 @@ const ProductList = () => {
     const [productData, setProductData] = useState<IProduct | null>(null);
     const [onPopupProductDetail, setOnPopupProductDetail] = useState<boolean>(false);
 
+    //Create   
+
+
     useEffect(() => {
         if (!isPopupOpen) {
             dispatch(getAllProducts());
@@ -50,6 +54,10 @@ const ProductList = () => {
     const handlePopupOpen = () => {
         setIsPopupOpen(true);
     };
+    const handlePopupClose = () => {
+        setIsPopupOpen(false);
+    };
+
 
     const handleShowProductDetail = (pro: IProduct) => {
         setProductData(pro);
@@ -74,6 +82,10 @@ const ProductList = () => {
                         Add New Product
                     </Button>
                 }
+            />
+            <PopupCreateProduct
+                isPopupCreateProductOpen={isPopupOpen}
+                closePopupCreateProduct={handlePopupClose}
             />
             {productData && (
                 <PopupProductDetail
