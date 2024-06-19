@@ -6,6 +6,7 @@ import storage from 'redux-persist/lib/storage';
 import authSlice from '../features/authSlice';
 import categorySlice from '../features/categorySlice';
 import productSlice from '../features/productSlice';
+import userSlice from '../features/userSlice';
 
 // Định nghĩa cấu hình persist
 const persistConfig = {
@@ -15,6 +16,7 @@ const persistConfig = {
         'auth',
         'categories',
         'products',
+        'users'
     ],
 };
 
@@ -22,6 +24,7 @@ const rootReducer = combineReducers({
     auth: authSlice,
     categories: categorySlice,
     products: productSlice,
+    users: userSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

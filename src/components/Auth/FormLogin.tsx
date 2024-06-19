@@ -30,9 +30,8 @@ const FormLogin = () => {
       .then((response) => {
         const role = response.data.userResult.role;
         console.log(role);
-
         if (role === "Admin") {
-          navigate("/account-management");
+          navigate("/admin-dashboard");
         } else if (role === "StoreOwner") {
           navigate("/dashboard");
         } else if (role === "Customer") {
@@ -45,7 +44,6 @@ const FormLogin = () => {
       })
       .finally(() => setIsLoading(false));
   };
-
   return (
     <div className="flex flex-col items-center mt-10 gap-8 px-4 sm:px-0">
       {/* header title form */}
