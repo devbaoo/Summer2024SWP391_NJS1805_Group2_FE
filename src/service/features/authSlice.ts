@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ILogin, ILoginResponse, IRegister, IUser } from "../../models/User";
+import { IChangePassword, IChangePasswordResponse, ILogin, ILoginResponse, IRegister, IUser } from "../../models/User";
 import { toast } from "react-toastify";
-import { loginEndpoint, registerEndpoint } from "../api/apiConfig";
+import { changePasswordEndpoint, loginEndpoint, registerEndpoint } from "../api/apiConfig";
 import axios from "axios";
 
 type AccountState = {
@@ -73,6 +73,34 @@ export const logoutUser = createAsyncThunk<
     return thunkAPI.rejectWithValue(error.response.data);
   }
 });
+
+export const changePassword = createAsyncThunk<IChangePasswordResponse, IChangePassword>(
+  "auth/changePassword",
+  async (data, thunkAPI) => {
+    try {
+      const token = sessionStorage.getItem('suame88');
+      const response = await axios.put(changePasswordEndpoint, data, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    },);
+      if(response.data.success){
+        toast.success(response.data.message);
+      }else{
+        toast.error(response.data.message);
+      }
+      return response.data;      
+    } catch (error: any) {
+      toast.error('Register Failed !');
+      if (error.response) {
+        toast.error('Register Failed !');
+        return thunkAPI.rejectWithValue({
+          error: error.response?.data?.errorMessages,
+        });
+      }
+    }
+  }
+);
 
 export const authSlice = createSlice({
   name: "auth",

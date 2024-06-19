@@ -31,3 +31,25 @@ export interface IRegister {
     password: string;
     phone: string;
 }
+
+export interface IUserInfo {
+    email: string;
+    name: string;
+    phone: string;
+    avatarUrl: string;
+    rank: string,
+    roleId: number,
+    roleName: string,
+}
+
+export interface IChangePassword{
+    oldPassword: string,
+    newPassword: string,
+}
+
+export interface IChangePasswordResponse {
+    message: string,
+    status: number,
+    success: boolean;
+    errors: string[] | null
+}
