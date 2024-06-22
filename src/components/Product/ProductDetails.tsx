@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 const ProductDetails = () => {
     const params = useParams();
     const dispatch = useAppDispatch();
-    const { product } = useAppSelector((state) => state.products);
+    const { product, cart } = useAppSelector((state) => state.products);
     const productId = params.id && parseInt(params.id) as number;
 
     const [quantity, setQuantity] = useState(1);
@@ -22,8 +22,15 @@ const ProductDetails = () => {
 
     const handleAddToCart = () => {
         if (product) {
-            dispatch(addToCart(product));
-            toast.success(`Đã thêm  ${product.name} vào giỏ hàng.`);
+            // Tạo cartId mới bằng cách lấy độ dài của cart hiện tại + 1
+            const newCartId = (cart ? cart.length : 0) + 1;
+
+            dispatch(addToCart({
+                ...product,
+                quantity,
+                cartId: newCartId
+            }));
+            toast.success(`Đã thêm ${product.name} vào giỏ hàng.`);
         }
     };
 

@@ -22,7 +22,7 @@ type ProductState = {
     products: IProduct[] | null;
     product: IProduct | null;
     createProduct: IProductCreate | null;
-    cart: ICartItem[] | null
+    cart: ICartItem[] | null;
     error: string | unknown;
     success: boolean;
 };
@@ -65,7 +65,7 @@ export const getProductById = createAsyncThunk<IProduct, { id: number }>(
                     Authorization: `Bearer ${token}`,
                 },
             });
-            return response.data
+            return response.data;
         } catch (error: any) {
             return thunkAPI.rejectWithValue(
                 error.response?.data?.errorMessages || 'Unknown error',
@@ -96,6 +96,7 @@ export const createProduct = createAsyncThunk<IProductCreate, Object>(
         }
     },
 );
+
 // Define a function to save cart to localStorage
 const saveCartToStorage = (cart: ICartItem[] | null) => {
     if (cart) {
@@ -104,6 +105,7 @@ const saveCartToStorage = (cart: ICartItem[] | null) => {
         localStorage.removeItem('cart');
     }
 };
+
 export const productSlice = createSlice({
     name: 'products',
     initialState,
@@ -111,19 +113,18 @@ export const productSlice = createSlice({
         setError: (state, action: PayloadAction<string | unknown>) => {
             state.error = action.payload;
         },
-        addToCart: (state, action: PayloadAction<IProduct>) => {
+        addToCart: (state, action: PayloadAction<ICartItem>) => {
             const productToAdd = action.payload;
 
             if (state.cart) {
                 const existingCartItem = state.cart.find(item => item.id === productToAdd.id);
 
                 if (existingCartItem) {
-                    existingCartItem.quantity += 1;
+                    existingCartItem.quantity += productToAdd.quantity; // Cập nhật số lượng hiện tại với số lượng mới
                 } else {
                     const newCartItem: ICartItem = {
                         ...productToAdd,
                         cartId: state.cart.length + 1,
-                        quantity: 1,
                     };
                     state.cart.push(newCartItem);
                 }
@@ -131,7 +132,6 @@ export const productSlice = createSlice({
                 state.cart = [{
                     ...productToAdd,
                     cartId: 1,
-                    quantity: 1,
                 }];
             }
             // lưu local storage
@@ -210,7 +210,6 @@ export const productSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         });
-
     },
 });
 
