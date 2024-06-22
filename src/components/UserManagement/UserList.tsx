@@ -3,7 +3,7 @@ import { IUserInfo } from "../../models/User";
 import { useAppDispatch, useAppSelector } from "../../service/store/store";
 import { useEffect, useState } from "react";
 import { getAllUser } from "../../service/features/userSlice";
-import { Button, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import CommonTable from "../Table/CommonTable";
 import PopupUserDetail from "../Popup/PopupUserDetail";
 const columns: MRT_ColumnDef<IUserInfo>[] = [
@@ -24,7 +24,7 @@ const columns: MRT_ColumnDef<IUserInfo>[] = [
     {
         accessorKey: "rank",
         header: "Rank",
-    },
+    }, 
     {
         accessorKey: "roleName",
         header: "Role",
