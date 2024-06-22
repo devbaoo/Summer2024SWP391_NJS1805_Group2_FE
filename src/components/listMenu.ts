@@ -13,6 +13,10 @@ const listMenu = {
             title: 'Category Management',
             url: '/category-management',
         },
+        {
+            title: 'Order Management',
+            url: '/order-management',
+        },
     ],
     isAdminMenu: [
         {
@@ -22,7 +26,15 @@ const listMenu = {
         {
             title: 'User Management',
             url: '/user-management',
-        }
+        },
+        {
+            title: 'Category Management',
+            url: '/category-management',
+        },
+        {
+            title: 'Product Management',
+            url: '/product-management',
+        },
     ]
 };
 export default listMenu;

@@ -41,6 +41,7 @@ const ProfileComponent: React.FC<ProfileProps> = ({ email, phone, name, avatarUr
               variant="outlined"
               fullWidth
               disabled
+              InputLabelProps={{ shrink: true }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -50,6 +51,7 @@ const ProfileComponent: React.FC<ProfileProps> = ({ email, phone, name, avatarUr
               variant="outlined"
               fullWidth
               disabled
+              InputLabelProps={{ shrink: true }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -59,6 +61,7 @@ const ProfileComponent: React.FC<ProfileProps> = ({ email, phone, name, avatarUr
               variant="outlined"
               fullWidth
               disabled
+              InputLabelProps={{ shrink: true }}
             />
           </Grid>
       
