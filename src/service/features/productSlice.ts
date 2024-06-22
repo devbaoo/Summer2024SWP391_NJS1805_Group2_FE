@@ -1,14 +1,28 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { createProductEndpoint, getAllProductsEndpoint, getProductByIdEndpoint } from "../api/apiConfig";
 import { IProduct, IProductCreate } from "../../models/Produdct";
 import { toast } from "react-toastify";
+import { ICartItem } from "../../models/CartItem";
+
+const loadCartFromStorage = (): ICartItem[] | null => {
+    const cartString = localStorage.getItem('cart');
+    if (cartString) {
+        try {
+            return JSON.parse(cartString);
+        } catch (error) {
+            console.error('Error parsing cart from localStorage:', error);
+        }
+    }
+    return null;
+};
 
 type ProductState = {
     loading: boolean;
     products: IProduct[] | null;
     product: IProduct | null;
     createProduct: IProductCreate | null;
+    cart: ICartItem[] | null
     error: string | unknown;
     success: boolean;
 };
@@ -18,6 +32,7 @@ const initialState: ProductState = {
     products: null,
     product: null,
     createProduct: null,
+    cart: loadCartFromStorage(),
     error: null,
     success: false,
 };
@@ -81,13 +96,81 @@ export const createProduct = createAsyncThunk<IProductCreate, Object>(
         }
     },
 );
-
+// Define a function to save cart to localStorage
+const saveCartToStorage = (cart: ICartItem[] | null) => {
+    if (cart) {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    } else {
+        localStorage.removeItem('cart');
+    }
+};
 export const productSlice = createSlice({
     name: 'products',
     initialState,
     reducers: {
-        setError: (state, action) => {
+        setError: (state, action: PayloadAction<string | unknown>) => {
             state.error = action.payload;
+        },
+        addToCart: (state, action: PayloadAction<IProduct>) => {
+            const productToAdd = action.payload;
+
+            if (state.cart) {
+                const existingCartItem = state.cart.find(item => item.id === productToAdd.id);
+
+                if (existingCartItem) {
+                    existingCartItem.quantity += 1;
+                } else {
+                    const newCartItem: ICartItem = {
+                        ...productToAdd,
+                        cartId: state.cart.length + 1,
+                        quantity: 1,
+                    };
+                    state.cart.push(newCartItem);
+                }
+            } else {
+                state.cart = [{
+                    ...productToAdd,
+                    cartId: 1,
+                    quantity: 1,
+                }];
+            }
+            // lưu local storage
+            saveCartToStorage(state.cart);
+        },
+        increaseQuantity: (state, action: PayloadAction<number>) => {
+            const productId = action.payload;
+            if (state.cart) {
+                const cartItem = state.cart.find(item => item.id === productId);
+                if (cartItem) {
+                    cartItem.quantity += 1;
+                    saveCartToStorage(state.cart);
+                }
+            }
+        },
+        decreaseQuantity: (state, action: PayloadAction<number>) => {
+            const productId = action.payload;
+            if (state.cart) {
+                const cartItemIndex = state.cart.findIndex(item => item.id === productId);
+                if (cartItemIndex !== -1) {
+                    const cartItem = state.cart[cartItemIndex];
+                    if (cartItem.quantity > 1) {
+                        cartItem.quantity -= 1;
+                    } else {
+                        state.cart.splice(cartItemIndex, 1);
+                    }
+                    saveCartToStorage(state.cart);
+                }
+            }
+        },
+        removeFromCart: (state, action: PayloadAction<number>) => {
+            const productId = action.payload;
+            if (state.cart) {
+                const cartItemIndex = state.cart.findIndex(item => item.id === productId);
+                if (cartItemIndex !== -1) {
+                    state.cart.splice(cartItemIndex, 1);
+                    saveCartToStorage(state.cart);
+                }
+            }
         },
     },
     extraReducers: (builder) => {
@@ -131,5 +214,5 @@ export const productSlice = createSlice({
     },
 });
 
-export const { setError } = productSlice.actions;
+export const { setError, addToCart, increaseQuantity, decreaseQuantity, removeFromCart } = productSlice.actions;
 export default productSlice.reducer;

@@ -11,6 +11,7 @@ import ChangePassword from '../pages/Profile/ChangePassword';
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import Dashboard from '../pages/StoreManager/Dashboard';
 import UserManagement from '../pages/admin/UserManagement';
+import ViewCart from '../pages/client/Cart/ViewCart';
 
 const AppRouter = () => {
     const token = sessionStorage.getItem('suame88');
@@ -48,6 +49,7 @@ const AppRouter = () => {
                 <>
                     <Route path="/home" element={<Home />} />
                     <Route path="/product/:id" element={<ProductDetails />} />
+                    <Route path="/view-cart" element={<ViewCart />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/change-password" element={<ChangePassword />} />
                 </>
@@ -56,7 +58,8 @@ const AppRouter = () => {
                 <>
                     <Route path="/admin-dashboard" element={<AdminDashboard />} />
                     <Route path="/user-management" element={<UserManagement />} />
-
+                    <Route path="/product-management" element={<ProductManagement />} />
+                    <Route path="/category-management" element={<CategoryManagement />} />
                 </>
 
             )}
