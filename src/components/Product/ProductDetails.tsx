@@ -5,12 +5,13 @@ import { useAppDispatch, useAppSelector } from "../../service/store/store";
 import { addToCart, getProductById, increaseQuantity, decreaseQuantity } from "../../service/features/productSlice";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import Feedback from "../Feedback/Feedback";
 
 const ProductDetails = () => {
     const params = useParams();
     const dispatch = useAppDispatch();
     const { product, cart } = useAppSelector((state) => state.products);
-    const productId = params.id && parseInt(params.id) as number;
+    const productId = params.id ? Number(params.id) : undefined;
 
     const [quantity, setQuantity] = useState(1);
 
@@ -105,6 +106,11 @@ const ProductDetails = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+            <section className="text-gray-700 body-font overflow-hidden bg-white border-t-4 w-full">
+                <div className="m-10">
+                    <Feedback productId={productId} />
                 </div>
             </section>
             <section>
