@@ -38,6 +38,8 @@ const AppRouter = () => {
 
     return (
         <Routes>
+                 <Route path="/profile" element={<Profile />} />
+                 <Route path="/change-password" element={<ChangePassword />} />
             {isStoreOwner && (
                 <>
                     <Route path="/dashboard" element={<Dashboard />} />
@@ -50,8 +52,6 @@ const AppRouter = () => {
                     <Route path="/home" element={<Home />} />
                     <Route path="/product/:id" element={<ProductDetails />} />
                     <Route path="/view-cart" element={<ViewCart />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/change-password" element={<ChangePassword />} />
                 </>
             )}
             {isAdmin && (

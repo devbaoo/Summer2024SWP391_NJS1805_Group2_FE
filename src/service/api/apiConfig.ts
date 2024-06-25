@@ -5,7 +5,7 @@ export const registerEndpoint = `${BASE_URL}/Auth/register`
 export const changePasswordEndpoint = `${BASE_URL}/Auth/change-password`
 
 //User
-export const getUserProfileEndpoint = `${BASE_URL}/User/profile`
+export const getUserProfileEndpoint = `${BASE_URL}/Users/profile`
 export const getAllUsersEndpoint = `${BASE_URL}/User/users`
 
 //category
@@ -19,3 +19,7 @@ export const getAllProductsEndpoint = `${BASE_URL}/products`
 export const getProductByIdEndpoint = `${BASE_URL}/products`
 export const createProductEndpoint = `${BASE_URL}/products`
 export const updateProductEndpoint = `${BASE_URL}/products`
+
+//Feedback Endpoints
+export const getFeedbackByProductId = `${BASE_URL}/feedbacks`
+export const createFeedbackEndpoint = `${BASE_URL}/feedbacks`

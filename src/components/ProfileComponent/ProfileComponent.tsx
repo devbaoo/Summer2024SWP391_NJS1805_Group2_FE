@@ -1,6 +1,7 @@
 import { Avatar, Button, Card, CardContent, Grid, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../service/store/store';
 
 interface ProfileProps {
   email?: string;
@@ -13,8 +14,11 @@ interface ProfileProps {
 const ProfileComponent: React.FC<ProfileProps> = ({ email, phone, name, avatarUrl , rank }) => {
     const navigate = useNavigate()
 
+    const { account } = useAppSelector((state) => state.auth);
+    const isCustomer = account && account.userResult && account.userResult.role.includes('Customer');
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+    <div className={`${isCustomer ? "flex justify-center items-center min-h-screen bg-gray-100 p-4 " : "flex justify-center items-center p-4"}`}>
     <Card className="w-full max-w-4xl p-6 shadow-md">
       <CardContent>
         <div className="flex items-center justify-between mb-6">

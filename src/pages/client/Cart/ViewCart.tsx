@@ -65,7 +65,7 @@ const ViewCart = () => {
                     </div>
                     <div className="lg:w-1/2 w-full mt-12 mx-auto">
                         <div className="flex flex-col items-center justify-center">
-                            <p className="text-xl text-gray-900 mb-4">Tổng cộng: {calculateTotal(cartItems)} VNĐ</p>
+                            <p className="text-xl text-gray-900 mb-4">Tổng cộng: ${calculateTotal(cartItems)}</p>
                             <button
                                 className="text-white bg-red-600 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded-lg"
                                 onClick={() => {
