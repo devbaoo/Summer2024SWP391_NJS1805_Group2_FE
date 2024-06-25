@@ -26,7 +26,7 @@ const SidebarComponent = () => {
             <div className="w-56 bg-pink-200 fixed h-full">
                 <div className='my-2 mb-4'>
                     <h1 className="text-2xl font-bold ml-4 text-pink-800">
-                        {activeMenuItem ? activeMenuItem.title : 'Admin Dashboard'}
+                        {activeMenuItem ? activeMenuItem.title : 'Profile'}
                     </h1>
                 </div>
                 <hr />

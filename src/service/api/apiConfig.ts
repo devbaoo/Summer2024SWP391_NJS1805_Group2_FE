@@ -5,7 +5,7 @@ export const registerEndpoint = `${BASE_URL}/Auth/register`
 export const changePasswordEndpoint = `${BASE_URL}/Auth/change-password`
 
 //User
-export const getUserProfileEndpoint = `${BASE_URL}/User/profile`
+export const getUserProfileEndpoint = `${BASE_URL}/Users/profile`
 export const getAllUsersEndpoint = `${BASE_URL}/User/users`
 
 //category
