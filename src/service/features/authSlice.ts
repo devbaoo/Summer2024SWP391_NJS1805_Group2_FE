@@ -39,20 +39,15 @@ export const registerUser = createAsyncThunk<IUser, Object>(
   }
 );
 
-export const loginUser = createAsyncThunk<ILoginResponse, ILogin>(
+export const loginUser = createAsyncThunk<IUser, ILogin>(
   "auth/loginUser",
   async (data, thunkAPI) => {
     try {
       const response = await axios.post(loginEndpoint, data);
-      if (response.data.success) {
-        const token = response.data.data.token.accessToken;
-        sessionStorage.setItem("suame88", token);
-        toast.success("Login Successful !");
-        return response.data;
-      } else {
-        toast.error("Login Failed !");
-        return thunkAPI.rejectWithValue(response.data);
-      }
+      const token = response.data.accessToken;
+      sessionStorage.setItem("suame88", token);
+      toast.success("Login Successful !");
+      return response.data;
     } catch (error: any) {
       toast.error("Login Failed !");
       return thunkAPI.rejectWithValue(error.response.data);
@@ -81,15 +76,15 @@ export const changePassword = createAsyncThunk<IChangePasswordResponse, IChangeP
       const token = sessionStorage.getItem('suame88');
       const response = await axios.put(changePasswordEndpoint, data, {
         headers: {
-            Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
-    },);
-      if(response.data.success){
+      },);
+      if (response.data.success) {
         toast.success(response.data.message);
-      }else{
+      } else {
         toast.error(response.data.message);
       }
-      return response.data;      
+      return response.data;
     } catch (error: any) {
       toast.error('Register Failed !');
       if (error.response) {
@@ -129,7 +124,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(loginUser.fulfilled, (state, action) => {
       state.loading = false;
-      state.account = action.payload.data;
+      state.account = action.payload;
       state.success = true;
     });
     builder.addCase(loginUser.rejected, (state, action) => {

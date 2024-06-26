@@ -1,7 +1,8 @@
-export const BASE_URL = 'https://suame88.azurewebsites.net/api'
+export const BASE_URL = 'http://api-suame88.evericks.com/api'
 
-export const loginEndpoint = `${BASE_URL}/Auth/login`
-export const registerEndpoint = `${BASE_URL}/Auth/register`
+export const loginEndpoint = `${BASE_URL}/auth/customers`
+export const registerEndpoint = `${BASE_URL}/customers`
+
 export const changePasswordEndpoint = `${BASE_URL}/Auth/change-password`
 
 //User

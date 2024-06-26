@@ -5,7 +5,7 @@ import { loginUser } from "../../service/features/authSlice";
 import { useAppDispatch } from "../../service/store/store";
 
 type FormLoginValues = {
-  email: string;
+  username: string;
   password: string;
 };
 
@@ -16,7 +16,7 @@ const FormLogin = () => {
 
   const form = useForm<FormLoginValues>({
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
     },
   });
@@ -28,11 +28,11 @@ const FormLogin = () => {
     dispatch(loginUser(data))
       .unwrap()
       .then((response) => {
-        const role = response.data.userResult.role;
+        const role = response.user.role;
         console.log(role);
         if (role === "Admin") {
           navigate("/admin-dashboard");
-        } else if (role === "StoreOwner") {
+        } else if (role === "Staff") {
           navigate("/dashboard");
         } else if (role === "Customer") {
           navigate("/home");
@@ -58,18 +58,18 @@ const FormLogin = () => {
       >
         <div className="flex flex-col">
           <div className="flex flex-row">
-            <label htmlFor="email" className="text-base font-semibold">
-              Email:{" "}
+            <label htmlFor="username" className="text-base font-semibold">
+              Username:
             </label>
-            {errors.email && (
-              <p className="text-sm text-red-500">* {errors.email.message}</p>
+            {errors.username && (
+              <p className="text-sm text-red-500">* {errors.username.message}</p>
             )}
           </div>
           <input
-            {...register("email", { required: "Email is required" })}
-            id="email"
-            name="email"
-            placeholder="Enter your email..."
+            {...register("username", { required: "Username is required" })}
+            id="username"
+            name="username"
+            placeholder="Enter your username..."
             className="mt-2 p-2 border-2 border-pink-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 w-full"
           />
         </div>
