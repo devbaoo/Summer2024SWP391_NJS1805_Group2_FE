@@ -1,10 +1,9 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import { createProductEndpoint, getAllProductsEndpoint, getProductByIdEndpoint } from "../api/apiConfig";
 import { IProduct, IProductCreate } from "../../models/Produdct";
 import { toast } from "react-toastify";
 import { ICartItem } from "../../models/CartItem";
-
+import axios from "../api/customAxios";
 const loadCartFromStorage = (): ICartItem[] | null => {
     const cartString = localStorage.getItem('cart');
     if (cartString) {
@@ -41,12 +40,7 @@ export const getAllProducts = createAsyncThunk<IProduct[], void>(
     'products/getAllProducts',
     async (_, thunkAPI) => {
         try {
-            const token = sessionStorage.getItem('suame88');
-            const response = await axios.get(getAllProductsEndpoint, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+            const response = await axios.post('/products/filter',{});
             return response.data.data;
         } catch (error: any) {
             return thunkAPI.rejectWithValue(error.response.data);
@@ -59,12 +53,7 @@ export const getProductById = createAsyncThunk<IProduct, { id: number }>(
     async (data, thunkAPI) => {
         const { id } = data;
         try {
-            const token = sessionStorage.getItem('suame88');
-            const response = await axios.get(`${getProductByIdEndpoint}/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+            const response = await axios.get(`/products/${id}`);
             return response.data;
         } catch (error: any) {
             return thunkAPI.rejectWithValue(
@@ -78,15 +67,9 @@ export const createProduct = createAsyncThunk<IProductCreate, Object>(
     'products/createProduct',
     async (product, thunkAPI) => {
         try {
-            const token = sessionStorage.getItem('suame88');
             const response = await axios.post(
-                createProductEndpoint,
-                product,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                },
+                '/products',
+                product
             );
             toast.success('Create Successfully!');
             return response.data.data;
