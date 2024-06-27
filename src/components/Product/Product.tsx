@@ -10,14 +10,13 @@ const Product = () => {
     useEffect(() => {
         dispatch(getAllProducts());
     }, [dispatch]);
-
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p className="flex items-center justify-center">Loading...</p>;
     if (!products) return <p>No products available</p>;
 
     return (
         <div className="grid grid-cols-4 gap-4">
             {products.map((product, index) => (
-                <div key={index} className="flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-[350px] h-[400px]">
+                <div key={index} className="flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[400px]">
                     <div className="flex items-center justify-center">
                         <img className="w-[250px] h-[200px] p-4" src={'https://lzd-img-global.slatic.net/g/p/a76230e0f618381db919783fd72ac32c.jpg_320x320.jpg_550x550.jpg'} alt={product.name} />
                     </div>
