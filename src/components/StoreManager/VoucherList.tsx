@@ -4,9 +4,9 @@ import { Button, Stack } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../service/store/store";
 import CommonTable from "../Table/CommonTable";
 import { IVoucher } from "../../models/Voucher";
-import PopupCreateProduct from "../Popup/PopupCreateProduct";
 import { getAllVouchers } from "../../service/features/voucherSlice";
 import PopupVoucherDetail from "../Popup/PopupVoucherDetail";
+import PopupCreateVoucher from "../Popup/PopupCreateVoucher";
 
 const columns: MRT_ColumnDef<IVoucher>[] = [
     {
