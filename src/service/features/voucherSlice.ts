@@ -33,22 +33,22 @@ export const getAllVouchers = createAsyncThunk<IVoucher[], void>(
     },
 );
 
-// export const createVoucher = createAsyncThunk<IVoucherCreate, FormData>(
-//     'vouchers/createVoucher',
-//     async (voucher, thunkAPI) => {
-//         try {
-//             const response = await axios.post(
-//                 '/vouchers',
-//                 voucher
-//             );
-//             toast.success('Create Successfully!');
-//             return response.data.data;
-//         } catch (error: any) {
-//             toast.error('Create Failed!');
-//             return thunkAPI.rejectWithValue(error.response.data);
-//         }
-//     },
-// );
+export const createVoucher = createAsyncThunk<any ,any>(
+    'vouchers/createVoucher',
+    async (voucher, thunkAPI) => {
+        try {
+            const response = await axios.post(
+                '/vouchers',
+                voucher
+            );
+            toast.success('Create Successfully!');
+            return response.data.data;
+        } catch (error: any) {
+            toast.error('Create Failed!');
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    },
+);
 
 export const voucherSlice = createSlice({
     name: 'vouchers',

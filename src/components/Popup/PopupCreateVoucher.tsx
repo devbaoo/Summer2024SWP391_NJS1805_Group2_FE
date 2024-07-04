@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../service/store/store";
-import { Form, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { schemaVoucher } from "../../schema/schemaVoucher";
 import { createVoucher, getAllVouchers } from "../../service/features/voucherSlice";
 import { XMarkIcon } from "@heroicons/react/16/solid";
 import { Autocomplete,TextField,Stack } from "@mui/material";
@@ -17,21 +14,21 @@ type VoucherCreateFormValues = {
 
 };
 
-const PopupCreateProduct: React.FC<VoucherCreateState> = ({
+const PopupCreateVoucher: React.FC<VoucherCreateState> = ({
     isPopupCreateVoucherOpen,
     closePopupCreateVoucher
 }) => {
     const dispatch = useAppDispatch();
-    const [imageSend, setImageSend] = useState<File | null>(null);
     const [form, setForm]=useState(
         {
             "code": "",
             "name": "",
-            "from": new Date(),
+            "from": "",
             "to": "",
             "minOrderValue": 1,
             "value": 1,
-            "quantity": 1
+            "quantity": 1,
+            "thumbnailUrl": "string",
           }
     )
     const [checkValid, setCheckValid]=useState({
@@ -39,58 +36,36 @@ const PopupCreateProduct: React.FC<VoucherCreateState> = ({
         name: false,
         from: false,
         to: false,
-        minOrderValue: false,
-        value: false,
-        quantity: false,
-
     })
     const validation = () => {
         setCheckValid(prev => ({
             ...prev,
             name: form.name.trim() === '',
             code: form.code.trim() === '',
-            to: form.to.trim() === '',
-            value: form.value.trim() === '',
-            minOrderValue: form.minOrderValue.trim() === '',
-            quantity: form.quantity.trim() === '',
+            to: form.to === '',
+            from: form.from === '',
         }));
+        return form.name.trim() === '' || form.code.trim() === '' || form.to === '' || form.from === '';
     };
     const handleCreateProduct = async() =>{
-        console.log(form.name)
+        console.log(form)
         if(validation()) return;
-        const formData = new FormData()
-        formData.append('name', form.name)
-        formData.append('code', form.code)
-        formData.append('from', form.from)
-        formData.append('to',form.to)
-        formData.append('value',form.value)
-        formData.append('minOrderValue',form.minOrderValue.toString())
-        formData.append('value', form.value.toString())
-        formData.append('quantity', form.quantity.toString())
-        // await dispatch(createVoucher(formData))
-        // await dispatch(getAllVouchers()).then(()=>{
-        //     setForm({
-        //         name:'',
-        //         code: '',
-        //     }) 
-        //     closePopupCreateVoucher()
-        // })
+        await dispatch(createVoucher(form))
+        await dispatch(getAllVouchers()).then(()=>{
+            setForm({
+                "code": "",
+                "name": "",
+                "from": "",
+                "to": "",
+                "minOrderValue": 1,
+                "value": 1,
+                "quantity": 1,
+                "thumbnailUrl": "string",
+            })
+            closePopupCreateVoucher()
+        })
     }
 
-    const [productCategories, setProductCategories] = useState([])
-    const loadProductCategories = async() =>{
-        await instance.post('/categories/filter', {})
-        .then(res => {
-            const list = res.data.data.map((item: {
-                id: string,
-                name: string
-              }) => ({label: item.name, value: item.id}))
-            setProductCategories(list)
-            setForm(prev => ({...prev, productCategories: list[0]}))
-        })
-        .catch(err => console.log(err))
-    }
-    useEffect(()=>{loadProductCategories()},[])
     return (
         isPopupCreateVoucherOpen && (
             <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
@@ -161,8 +136,8 @@ const PopupCreateProduct: React.FC<VoucherCreateState> = ({
                             </div>
                             
                             <div className="mb-4">
-                                <label htmlFor="minordervalue" className="block text-sm font-medium text-gray-700">Minimum Order Value</label>
-                                <input value={form.minordervalue} onChange={(e) => setForm(prev => ({...prev, minordervalue: parseInt(e.target.value)}))}
+                                <label htmlFor="minOrderValue" className="block text-sm font-medium text-gray-700">Minimum Order Value</label>
+                                <input value={form.minOrderValue} onChange={(e) => setForm(prev => ({...prev, minOrderValue: parseInt(e.target.value)}))}
                                     type="number" min={1}
                                     id="price"
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
@@ -191,4 +166,4 @@ const PopupCreateProduct: React.FC<VoucherCreateState> = ({
     );
 };
 
-export default PopupCreateProduct;
+export default PopupCreateVoucher;
