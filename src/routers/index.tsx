@@ -13,6 +13,7 @@ import UserManagement from '../pages/admin/UserManagement';
 import ViewCart from '../pages/client/Cart/ViewCart';
 import VoucherManagement from '../pages/StoreManager/VoucherManagement';
 import ProductManagement from '../pages/StoreManager/ProductManagement';
+import ThankYou from '../components/Payment/ThankYou';
 
 const AppRouter = () => {
     const token = sessionStorage.getItem('suame88');
@@ -56,6 +57,8 @@ const AppRouter = () => {
                     <Route path="/home" element={<Home />} />
                     <Route path="/product/:id" element={<ProductDetails />} />
                     <Route path="/view-cart" element={<ViewCart />} />
+                    <Route path="/thank-you" element={<ThankYou />} />
+
                 </>
             )}
             {isAdmin && (
