@@ -5,13 +5,14 @@ import Register from '../pages/client/Register';
 import CategoryManagement from '../pages/StoreManager/CategoryManagement';
 import Home from '../pages/client/Home';
 import ProductDetails from '../components/Product/ProductDetails';
-import ProductManagement from '../pages/StoreManager/ProductManagement';
 import Profile from '../pages/Profile/Profile';
 import ChangePassword from '../pages/Profile/ChangePassword';
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import Dashboard from '../pages/StoreManager/Dashboard';
 import UserManagement from '../pages/admin/UserManagement';
 import ViewCart from '../pages/client/Cart/ViewCart';
+import VoucherManagement from '../pages/StoreManager/VoucherManagement';
+import ProductManagement from '../pages/StoreManager/ProductManagement';
 import ThankYou from '../components/Payment/ThankYou';
 
 const AppRouter = () => {
@@ -47,8 +48,10 @@ const AppRouter = () => {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/category-management" element={<CategoryManagement />} />
                     <Route path="/product-management" element={<ProductManagement />} />
+                    <Route path="/voucher-management" element={<VoucherManagement />} />
                 </>
             )}
+                    <Route path="/voucher-management" element={<VoucherManagement />} />
             {isCustomer && (
                 <>
                     <Route path="/home" element={<Home />} />
