@@ -29,7 +29,7 @@ const ViewCart = () => {
     const [receiver, setReceiver] = useState("");
     const [address, setAddress] = useState("");
     const [phone, setPhone] = useState("");
-    const [paymentMethod, setPaymentMethod] = useState("COD");
+    const [paymentMethod, setPaymentMethod] = useState("Cash");
     const [selectedVoucherId, setSelectedVoucherId] = useState("");
     const [discountValue, setDiscountValue] = useState(0);
     const [vouchers, setVouchers] = useState<IVoucher[]>([]);
@@ -90,9 +90,17 @@ const ViewCart = () => {
 
     const handleCheckout = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
+    
+        const totalAmount = calculateTotal(cartItems);
+        const finalAmount = totalAmount - discountValue;
+    
+        if (finalAmount <= 0) {
+            toast.error('Total amount should be greater than zero.');
+            return;
+        }
+    
         const orderPayload = {
-            amount: calculateTotal(cartItems) - discountValue,
+            amount: finalAmount,
             discount: discountValue,
             receiver,
             address,
@@ -105,20 +113,38 @@ const ViewCart = () => {
                 price: item.price
             })) : []
         };
-
+    
         try {
-            const response = await instance.post('/api/orders', orderPayload);
-            console.log('Response status:', response.status);
-            console.log('Response data:', response.data);
-
+            const response = await instance.post('/orders', orderPayload);
+            const orderId = response.data.id; // Assume the order ID is in the response data
+    
+            // Clear the cart items
             cartItems && cartItems.forEach(item => dispatch(removeFromCart(item.id)));
-
-            navigate('/thank-you');
+    
+            if (paymentMethod === "Cash") {
+                navigate('/thank-you');
+            } else if (paymentMethod === "VNPay") {
+                const paymentResponse = await instance.post('/payments/request', {
+                    amount: finalAmount,
+                    orderId: orderId
+                });
+    
+                const paymentUrl = paymentResponse.data; 
+                if (paymentUrl) {
+                    window.location.href = paymentUrl;
+                } else {
+                    toast.error('Failed to get payment URL.');
+                    console.error('Payment URL is missing:', paymentResponse.data);
+                }
+            }
         } catch (error) {
             console.error('Error creating order:', error);
             toast.error('Failed to create order.');
         }
     };
+    
+    
+    
 
     return (
         <>
@@ -169,14 +195,14 @@ const ViewCart = () => {
                     </div>
                     <div className="lg:w-1/2 w-full mt-12 mx-auto">
                         <div className="flex flex-col items-center justify-center">
-                            <p className="text-xl text-gray-900 mb-4">Total: ${calculateTotal(cartItems) - discountValue}</p>
+                            <p className="text-xl text-gray-900 mb-4">Total: {calculateTotal(cartItems) - discountValue} VND</p>
                             <div className="flex flex-row space-x-4 mb-4">
                                 <label className="flex items-center">
                                     <input
                                         type="radio"
                                         value="COD"
-                                        checked={paymentMethod === "COD"}
-                                        onChange={() => setPaymentMethod("COD")}
+                                        checked={paymentMethod === "Cash"}
+                                        onChange={() => setPaymentMethod("Cash")}
                                         className="mr-2"
                                     />
                                     COD
