@@ -103,7 +103,7 @@ const OrderHistory = () => {
                   <p className="text-gray-600"><span className="font-semibold">Payment Method:</span> {order.paymentMethod}</p>
                 </div>
                 <div className="mb-2">
-                  <p className={`text-sm font-medium ${order.status === "Paid" ? "text-green-600" : "text-yellow-600"}`}>
+                <p className={`text-sm font-medium ${order.status === "Paid" ? "text-green-600" : order.status === "Canceled" ? "text-red-600" : "text-yellow-600"}`}>
                     <span className="font-semibold">Status:</span> {order.status}
                   </p>
                 </div>
