@@ -15,7 +15,7 @@ import ViewCart from '../pages/client/Cart/ViewCart';
 import ThankYou from '../components/Payment/ThankYou';
 import OrderHistory from '../components/Payment/OrderHistory';
 import ProductLineManagement from '../pages/StoreManager/ProductLineManagement';
-
+import ThankyouforVnpay from '../components/Payment/ThankyouforVnpay';
 
 const AppRouter = () => {
     const token = sessionStorage.getItem('suame88');
@@ -59,6 +59,8 @@ const AppRouter = () => {
                     <Route path="/view-cart" element={<ViewCart />} />
                     <Route path="/thank-you" element={<ThankYou />} />
                     <Route path="/order-history" element={<OrderHistory />} />
+                    <Route path="/thankyou" element={<ThankyouforVnpay />} />
+
                 </>
             )}
             {isAdmin && (
