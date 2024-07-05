@@ -42,12 +42,9 @@ const ProductList = () => {
     const [productData, setProductData] = useState<IProduct | null>(null);
     const [onPopupProductDetail, setOnPopupProductDetail] = useState<boolean>(false);
 
-    //Create   
-
-
     useEffect(() => {
         if (!isPopupOpen) {
-            dispatch(getAllProducts());
+            dispatch(getAllProducts({text:""}));
         }
     }, [isPopupOpen, dispatch]);
 
