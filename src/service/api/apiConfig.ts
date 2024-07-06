@@ -29,6 +29,4 @@ export const createFeedbackEndpoint = `${BASE_URL}/feedbacks`
 export const CreateOrder = `${BASE_URL}/orders`
 export const UpdateOrder = `${BASE_URL}/orders`
 
-//Feedback
-export const createFeedbackEndpoint = `${BASE_URL}/feedbacks`
 

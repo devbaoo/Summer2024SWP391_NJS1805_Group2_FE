@@ -1,6 +1,7 @@
 export interface IVoucher {
     id: number;
     name: string;
+    code: string;
     thumbnailurl: string;
     from: string;
     to: string;
@@ -13,6 +14,7 @@ export interface IVoucher {
 export interface IVoucherCreate {
     id: number;
     name: string;
+    code: string;
     thumbnailurl: string;
     from: string;
     to: string;

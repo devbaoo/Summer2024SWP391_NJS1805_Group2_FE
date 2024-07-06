@@ -50,6 +50,24 @@ export const createVoucher = createAsyncThunk<any ,any>(
     },
 );
 
+export const updateVoucher = createAsyncThunk<any, any>(
+    'vouchers/updateVoucher',
+    async (voucher, thunkAPI) => {
+        try {
+            const response = await axios.put(
+                `/vouchers/${voucher.id}`,
+                voucher
+            );
+            toast.success('Update Successfully!');
+            return response.data.data;
+        } catch (error: any) {
+            toast.error('Update Failed!');
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    },
+);
+
+
 export const voucherSlice = createSlice({
     name: 'vouchers',
     initialState,

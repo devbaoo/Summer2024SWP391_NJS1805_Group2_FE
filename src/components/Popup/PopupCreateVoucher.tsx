@@ -47,7 +47,7 @@ const PopupCreateVoucher: React.FC<VoucherCreateState> = ({
         }));
         return form.name.trim() === '' || form.code.trim() === '' || form.to === '' || form.from === '';
     };
-    const handleCreateProduct = async() =>{
+    const handleCreateVoucher = async() =>{
         console.log(form)
         if(validation()) return;
         await dispatch(createVoucher(form))
@@ -154,7 +154,7 @@ const PopupCreateVoucher: React.FC<VoucherCreateState> = ({
                             </div>
                         
                             <div className="flex justify-end">
-                                <button onClick={handleCreateProduct}
+                                <button onClick={handleCreateVoucher}
                                     className="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600">
                                     Create
                                 </button>

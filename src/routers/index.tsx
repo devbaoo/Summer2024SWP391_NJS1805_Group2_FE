@@ -14,6 +14,8 @@ import ViewCart from '../pages/client/Cart/ViewCart';
 import VoucherManagement from '../pages/StoreManager/VoucherManagement';
 import ProductManagement from '../pages/StoreManager/ProductManagement';
 import ThankYou from '../components/Payment/ThankYou';
+import Blog from '../pages/client/Blog/Blog';
+import FaqSection from '../pages/client/FAQ';
 
 const AppRouter = () => {
     const token = sessionStorage.getItem('suame88');
@@ -58,6 +60,8 @@ const AppRouter = () => {
                     <Route path="/product/:id" element={<ProductDetails />} />
                     <Route path="/view-cart" element={<ViewCart />} />
                     <Route path="/thank-you" element={<ThankYou />} />
+                    <Route path="/blog" element={<Blog />} />
+                    <Route path="/faq" element={<FaqSection />} />
 
                 </>
             )}
