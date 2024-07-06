@@ -22,8 +22,8 @@ const listMenu = {
             url: '/order-management',
         },
         {
-            title: 'Profile',
-            url: '/profile',
+            title: 'Voucher Management',
+            url: '/voucher-management',
         },
     ],
     isAdminMenu: [
@@ -42,10 +42,6 @@ const listMenu = {
         {
             title: 'Product Management',
             url: '/product-management',
-        },
-        {
-            title: 'Profile',
-            url: '/profile',
         },
     ]
 };
