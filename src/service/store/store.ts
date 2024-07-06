@@ -9,7 +9,6 @@ import productSlice from '../features/productSlice';
 import userSlice from '../features/userSlice';
 import cartSlice from '../features/cartSlice';
 import feedbackSlice from '../features/feedbackSlice';
-import voucherSlice from '../features/voucherSlice';
 
 // Định nghĩa cấu hình persist
 const persistConfig = {
@@ -21,8 +20,7 @@ const persistConfig = {
         'products',
         'users',
         'cart',
-        'feedbacks',
-        'vouchers',
+        'feedbacks'
     ],
 };
 
@@ -33,7 +31,6 @@ const rootReducer = combineReducers({
     users: userSlice,
     cart: cartSlice,
     feedbacks: feedbackSlice,
-    vouchers: voucherSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

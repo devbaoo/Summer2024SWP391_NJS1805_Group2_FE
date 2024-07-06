@@ -115,7 +115,7 @@ const CommonTable = <T extends MRT_RowData>({
                       table={table}
                       staticRowIndex={rowIndex}
                     />
-                  </TableCell>                
+                  </TableCell>
                 ))}
               </TableRow>
             ))}
