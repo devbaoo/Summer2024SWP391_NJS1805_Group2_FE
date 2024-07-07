@@ -46,8 +46,6 @@ const AppRouter = () => {
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/contact" element={<Contact />} />
-
-
             </Routes>
         );
     }
@@ -65,7 +63,6 @@ const AppRouter = () => {
                     <Route path="/order-management" element={<OrderManagement />} />
                     <Route path="/voucher-management" element={<VoucherManagement />} /> 
 
-
                 </>
             )}
             {isCustomer && (
@@ -80,7 +77,6 @@ const AppRouter = () => {
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/faq" element={<FAQ />} />
                     <Route path="/contact" element={<Contact />} />
-
                 </>
             )}
             {isAdmin && (
