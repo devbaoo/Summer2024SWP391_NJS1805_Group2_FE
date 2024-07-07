@@ -19,9 +19,13 @@ import ThankyouforVnpay from '../components/Payment/ThankyouforVnpay';
 import OrderManagement from '../pages/StoreManager/OrderManagerment';
 import ProductPage from '../pages/client/ProductPage';
 import Blog from '../pages/client/Blog/Blog';
+import FAQ from '../pages/client/FAQ'
+import Contact from '../pages/client/ContactUs';
+import VoucherManagement from '../pages/StoreManager/VoucherManagement';
+
 
 const AppRouter = () => {
-    const token = sessionStorage.getItem('suame88');
+    const token = localStorage.getItem('suame88');
     const { account } = useAppSelector((state) => state.auth);
 
     // Check if account and userResult are defined before accessing role
@@ -40,6 +44,9 @@ const AppRouter = () => {
                 <Route path="/product/:id" element={<ProductDetails />} />                            
                 <Route path="/product-page" element={<ProductPage />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/faq" element={<FAQ />} />
+                <Route path="/contact" element={<Contact />} />
+
 
             </Routes>
         );
@@ -56,7 +63,8 @@ const AppRouter = () => {
                     <Route path="/product-management" element={<ProductManagement />} />
                     <Route path="/product-line-management" element={<ProductLineManagement />} />
                     <Route path="/order-management" element={<OrderManagement />} />
-                    <Route path="/voucher-management" element={<OrderManagement />} /> 
+                    <Route path="/voucher-management" element={<VoucherManagement />} /> 
+
 
                 </>
             )}
@@ -70,7 +78,8 @@ const AppRouter = () => {
                     <Route path="/payments" element={<ThankyouforVnpay />} />
                     <Route path="/product-page" element={<ProductPage />} />
                     <Route path="/blog" element={<Blog />} />
-
+                    <Route path="/faq" element={<FAQ />} />
+                    <Route path="/contact" element={<Contact />} />
 
                 </>
             )}
@@ -80,6 +89,8 @@ const AppRouter = () => {
                     <Route path="/user-management" element={<UserManagement />} />
                     <Route path="/product-management" element={<ProductManagement />} />
                     <Route path="/category-management" element={<CategoryManagement />} />
+                    <Route path="/order-management" element={<OrderManagement />} />
+
                 </>
 
             )}
