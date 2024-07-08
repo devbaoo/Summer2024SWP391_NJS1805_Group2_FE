@@ -27,12 +27,14 @@ const ViewCart = () => {
     const cartItems = useAppSelector((state) => state.products.cart);
     const products = useAppSelector((state) => state.products.products); 
     const navigate = useNavigate();
+
     const storedReceiver = localStorage.getItem("USERNAME") || "";
     const storedAddress = localStorage.getItem("USERADDRESS");
     const storedPhone = localStorage.getItem("USERPHONE");
     const [receiver, setReceiver] = useState<string>(storedReceiver);
     const [address, setAddress] = useState<string>(storedAddress === "null" ? "" : storedAddress ?? "");
     const [phone, setPhone] = useState<string>(storedPhone === "null" ? "" : storedPhone ?? "");
+
     const [paymentMethod, setPaymentMethod] = useState("Cash");
     const [selectedVoucherId, setSelectedVoucherId] = useState("");
     const [discountValue, setDiscountValue] = useState(0);
