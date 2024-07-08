@@ -54,7 +54,8 @@ export const createFeedbackByProductId = createAsyncThunk<IFeedback, IFeedbackCr
             toast.success('Feedback Successfully!');
             return response.data.data;
         } catch (error: any) {
-            toast.error('Create Failed!');
+            toast.error(error.response.data);
+            // console.log(error.response.body);            
             return thunkAPI.rejectWithValue(error.response.data);
         }
     }

@@ -25,11 +25,14 @@ interface IVoucher {
 const ViewCart = () => {
     const dispatch = useAppDispatch();
     const cartItems = useAppSelector((state) => state.products.cart);
-    const products = useAppSelector((state) => state.products.products); // Assuming products are stored in state.products.products
+    const products = useAppSelector((state) => state.products.products); 
     const navigate = useNavigate();
-    const [receiver, setReceiver] = useState("");
-    const [address, setAddress] = useState("");
-    const [phone, setPhone] = useState("");
+    const storedReceiver = localStorage.getItem("USERNAME") || "";
+    const storedAddress = localStorage.getItem("USERADDRESS");
+    const storedPhone = localStorage.getItem("USERPHONE");
+    const [receiver, setReceiver] = useState<string>(storedReceiver);
+    const [address, setAddress] = useState<string>(storedAddress === "null" ? "" : storedAddress ?? "");
+    const [phone, setPhone] = useState<string>(storedPhone === "null" ? "" : storedPhone ?? "");
     const [paymentMethod, setPaymentMethod] = useState("Cash");
     const [selectedVoucherId, setSelectedVoucherId] = useState("");
     const [discountValue, setDiscountValue] = useState(0);
@@ -149,7 +152,7 @@ const ViewCart = () => {
         const finalAmount = totalAmount - discountValue;
 
         const phoneRegex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-        if (!phone.match(phoneRegex)) {
+        if (!phone?.match(phoneRegex)) {
             toast.error('Invalid phone number format.');
             return;
         }
@@ -214,9 +217,9 @@ const ViewCart = () => {
                                 <div key={item.id} className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                     <div className="flex items-center justify-center shadow-lg rounded-lg">
                                         <img
-                                            alt={item.name}
+                                            alt={item?.name ? item.name.toString() : ""}
                                             className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
-                                            src="https://lzd-img-global.slatic.net/g/p/a76230e0f618381db919783fd72ac32c.jpg_320x320.jpg_550x550.jpg"
+                                            src={item?.thumbnailUrl ? item.thumbnailUrl.toString() : ""}
                                         />
                                         <div className="text-center mt-4">
                                             <h2 className="text-gray-900 text-lg title-font font-medium mb-1">{item.name}</h2>
@@ -232,7 +235,7 @@ const ViewCart = () => {
                                                     min="1"
                                                     value={item.quantity}
                                                     onChange={(e) => handleQuantityChange(item, parseInt(e.target.value))}
-                                                    className="border border-gray-300 text-center h-7 w-20"
+                                                    className="w-16 h-8 text-center border border-gray-400 rounded"
                                                 />
                                                 <button
                                                     onClick={() => handleIncreaseQuantity(item)}
@@ -286,7 +289,7 @@ const ViewCart = () => {
                             <form className="mt-8 w-full" onSubmit={handleCheckout}>
                                 <h2 className="text-gray-900 text-lg font-medium mb-3">Shipping Information</h2>
                                 <div className="flex flex-col mb-4">
-                                    <input
+                                   <input
                                         type="text"
                                         placeholder="Receiver Name"
                                         value={receiver}
@@ -302,7 +305,7 @@ const ViewCart = () => {
                                         required
                                         className="border-2 border-gray-200 mb-2 py-2 px-4 w-full rounded-lg focus:outline-none"
                                     />
-                                    <input
+                                   <input
                                         type="text"
                                         placeholder="Phone"
                                         value={phone}
