@@ -4,6 +4,7 @@ import { IProduct, IProductCreate } from "../../models/Produdct";
 import { toast } from "react-toastify";
 import { ICartItem } from "../../models/CartItem";
 import axios from "../api/customAxios";
+// import instance from "../api/customAxios";
 
 const loadCartFromStorage = (): ICartItem[] | null => {
     const cartString = localStorage.getItem('cart');
@@ -41,7 +42,7 @@ export const getAllProducts = createAsyncThunk<IProduct[], { text?: string | nul
     'products/getAllProducts',
     async (data, thunkAPI) => {
         try {
-            const response = await axios.post('/products/filter', {
+            const response = await axios.post('/products/filter?pageSize=100', {
                 search: data.text
             });
             return response.data.data;
@@ -74,7 +75,6 @@ export const createProduct = createAsyncThunk<IProductCreate, FormData>(
                 '/products',
                 product
             );
-            toast.success('Create Successfully!');
             return response.data.data;
         } catch (error: any) {
             toast.error('Create Failed!');
@@ -158,6 +158,16 @@ export const productSlice = createSlice({
                 }
             }
         },
+        updateQuantity: (state, action: PayloadAction<{ id: number; quantity: number }>) => {
+            const { id, quantity } = action.payload;
+            if (state.cart) {
+                const cartItem = state.cart.find(item => item.id === id);
+                if (cartItem) {
+                    cartItem.quantity = quantity;
+                    saveCartToStorage(state.cart);
+                }
+            }
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(getAllProducts.pending, (state) => {
@@ -199,5 +209,5 @@ export const productSlice = createSlice({
     },
 });
 
-export const { setError, addToCart, increaseQuantity, decreaseQuantity, removeFromCart } = productSlice.actions;
+export const { setError, addToCart, increaseQuantity, decreaseQuantity, removeFromCart, updateQuantity } = productSlice.actions;
 export default productSlice.reducer;

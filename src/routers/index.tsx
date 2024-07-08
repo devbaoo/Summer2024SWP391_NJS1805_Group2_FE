@@ -13,16 +13,20 @@ import Dashboard from '../pages/StoreManager/Dashboard';
 import UserManagement from '../pages/admin/UserManagement';
 import ViewCart from '../pages/client/Cart/ViewCart';
 import ThankYou from '../components/Payment/ThankYou';
-import Blog from '../pages/client/Blog/Blog';
-import FaqSection from '../pages/client/FAQ';
 import OrderHistory from '../components/Payment/OrderHistory';
 import ProductLineManagement from '../pages/StoreManager/ProductLineManagement';
 import ThankyouforVnpay from '../components/Payment/ThankyouforVnpay';
 import OrderManagement from '../pages/StoreManager/OrderManagerment';
 import ProductPage from '../pages/client/ProductPage';
+import Blog from '../pages/client/Blog/Blog';
+import FAQ from '../pages/client/FAQ'
+import Contact from '../pages/client/ContactUs';
+import VoucherManagement from '../pages/StoreManager/VoucherManagement';
+import PolicyAndTerms from '../pages/client/PolicyAndTerms';
+
 
 const AppRouter = () => {
-    const token = sessionStorage.getItem('suame88');
+    const token = localStorage.getItem('suame88');
     const { account } = useAppSelector((state) => state.auth);
 
     // Check if account and userResult are defined before accessing role
@@ -38,10 +42,12 @@ const AppRouter = () => {
                 <Route path="/register" element={<Register />} />
                 <Route path="/" element={<Navigate to="/home" replace />} />
                 <Route path="*" element={<Navigate to="/home" replace />} />
-                <Route path="/product/:id" element={<ProductDetails />} />
+                <Route path="/product/:id" element={<ProductDetails />} />                            
                 <Route path="/product-page" element={<ProductPage />} />
-
-
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/faq" element={<FAQ />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/policy-and-terms" element={<PolicyAndTerms />} />
             </Routes>
         );
     }
@@ -57,6 +63,7 @@ const AppRouter = () => {
                     <Route path="/product-management" element={<ProductManagement />} />
                     <Route path="/product-line-management" element={<ProductLineManagement />} />
                     <Route path="/order-management" element={<OrderManagement />} />
+                    <Route path="/voucher-management" element={<VoucherManagement />} /> 
 
                 </>
             )}
@@ -66,21 +73,19 @@ const AppRouter = () => {
                     <Route path="/product/:id" element={<ProductDetails />} />
                     <Route path="/view-cart" element={<ViewCart />} />
                     <Route path="/thank-you" element={<ThankYou />} />
-                    <Route path="/blog" element={<Blog />} />
-                    <Route path="/faq" element={<FaqSection />} />
                     <Route path="/order-history" element={<OrderHistory />} />
-                    <Route path="/thankyou" element={<ThankyouforVnpay />} />
+                    <Route path="/payments" element={<ThankyouforVnpay />} />
                     <Route path="/product-page" element={<ProductPage />} />
-
-
+                    <Route path="/blog" element={<Blog />} />
+                    <Route path="/faq" element={<FAQ />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/policy-and-terms" element={<PolicyAndTerms />} />
                 </>
             )}
             {isAdmin && (
                 <>
                     <Route path="/admin-dashboard" element={<AdminDashboard />} />
                     <Route path="/user-management" element={<UserManagement />} />
-                    <Route path="/product-management" element={<ProductManagement />} />
-                    <Route path="/category-management" element={<CategoryManagement />} />
                 </>
 
             )}

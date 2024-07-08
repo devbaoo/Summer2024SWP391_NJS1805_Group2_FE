@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "../../../service/store/store";
 import { ICartItem } from "../../../models/CartItem";
-import { decreaseQuantity, removeFromCart, increaseQuantity } from "../../../service/features/productSlice";
+import { decreaseQuantity, removeFromCart, increaseQuantity, updateQuantity } from "../../../service/features/productSlice";
 import Header from "../../../components/Layout/Header";
 import Footer from "../../../components/Layout/Footer";
 import { useNavigate } from 'react-router-dom';
@@ -25,6 +25,7 @@ interface IVoucher {
 const ViewCart = () => {
     const dispatch = useAppDispatch();
     const cartItems = useAppSelector((state) => state.products.cart);
+    const products = useAppSelector((state) => state.products.products); // Assuming products are stored in state.products.products
     const navigate = useNavigate();
     const [receiver, setReceiver] = useState("");
     const [address, setAddress] = useState("");
@@ -41,9 +42,13 @@ const ViewCart = () => {
         return cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
     };
 
+    const formatCurrency = (amount: number): string => {
+        return amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+    };
+
     const fetchVouchers = async () => {
         try {
-            const response = await instance.post('/vouchers/filter', { status: 'active' });
+            const response = await instance.post('/vouchers/filter', { status: 'Active' });
             setVouchers(response.data.data);
         } catch (error) {
             console.error('Error fetching vouchers:', error);
@@ -55,16 +60,40 @@ const ViewCart = () => {
     }, []);
 
     const handleDecreaseQuantity = (cartItem: ICartItem) => {
-        dispatch(decreaseQuantity(cartItem.id));
+        if (cartItem.quantity > 1) {
+            dispatch(decreaseQuantity(cartItem.id));
+        }
     };
 
     const handleIncreaseQuantity = (cartItem: ICartItem) => {
-        dispatch(increaseQuantity(cartItem.id));
+        const product = products?.find((product) => product.id === cartItem.id);
+        if (product) {
+            if (cartItem.quantity < product.inStock) {
+                dispatch(increaseQuantity(cartItem.id));
+            } else {
+                toast.error('Quantity exceeds available stock.');
+                dispatch(updateQuantity({ id: cartItem.id, quantity: product.inStock }));
+            }
+        }
+    };
+
+    const handleQuantityChange = (cartItem: ICartItem, quantity: number) => {
+        const product = products?.find((product) => product.id === cartItem.id);
+        if (product) {
+            if (quantity <= product.inStock) {
+                if (quantity > 0) {
+                    dispatch(updateQuantity({ id: cartItem.id, quantity }));
+                }
+            } else {
+                toast.error('Quantity exceeds available stock.');
+                dispatch(updateQuantity({ id: cartItem.id, quantity: product.inStock }));
+            }
+        }
     };
 
     const handleRemoveFromCart = (cartItem: ICartItem) => {
         dispatch(removeFromCart(cartItem.id));
-        toast.error(`Đã xóa ${cartItem.name} khỏi giỏ hàng.`);
+        toast.error(`Removed ${cartItem.name} from cart.`);
     };
 
     const getVoucher = async (id: string) => {
@@ -82,7 +111,7 @@ const ViewCart = () => {
         const voucher = await getVoucher(selectedVoucherId);
         const totalAmount = calculateTotal(cartItems);
         if (voucher) {
-            if (voucher.status === 'active' && totalAmount >= voucher.minOrderValue) {
+            if (voucher.status === 'Active' && totalAmount >= voucher.minOrderValue) {
                 setDiscountValue(voucher.value);
                 toast.success(`Successfully applied voucher ${voucher.code} - ${voucher.name}!`);
             } else {
@@ -92,18 +121,44 @@ const ViewCart = () => {
             toast.error(`Invalid or expired voucher.`);
         }
     };
-    
+
     const handleCheckout = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-    
+
+        // Check if any cart item's quantity exceeds the available stock
+        let hasExceedingQuantity = false;
+        const updatedCartItems = cartItems?.map(item => {
+            const product = products?.find((product) => product.id === item.id);
+            if (product && item.quantity > product.inStock) {
+                toast.error(`Quantity of ${item.name} exceeds available stock. Adjusted to maximum available.`);
+                hasExceedingQuantity = true;
+                return { ...item, quantity: product.inStock };
+            }
+            return item;
+        });
+
+        if (hasExceedingQuantity) {
+            // Update cart items in the store
+            updatedCartItems?.forEach(item => {
+                dispatch(updateQuantity({ id: item.id, quantity: item.quantity }));
+            });
+            return;
+        }
+
         const totalAmount = calculateTotal(cartItems);
         const finalAmount = totalAmount - discountValue;
-    
+
+        const phoneRegex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+        if (!phone.match(phoneRegex)) {
+            toast.error('Invalid phone number format.');
+            return;
+        }
+
         if (finalAmount <= 0) {
             toast.error('Total amount should be greater than zero.');
             return;
         }
-    
+
         const orderPayload = {
             amount: finalAmount,
             discount: discountValue,
@@ -118,14 +173,14 @@ const ViewCart = () => {
                 price: item.price
             })) : []
         };
-    
+
         try {
             const response = await instance.post('/orders', orderPayload);
             const orderId = response.data.id; // Assume the order ID is in the response data
-    
+
             // Clear the cart items
             cartItems && cartItems.forEach(item => dispatch(removeFromCart(item.id)));
-    
+
             if (paymentMethod === "Cash") {
                 navigate('/thank-you');
             } else if (paymentMethod === "VNPay") {
@@ -133,8 +188,8 @@ const ViewCart = () => {
                     amount: finalAmount,
                     orderId: orderId
                 });
-    
-                const paymentUrl = paymentResponse.data; 
+
+                const paymentUrl = paymentResponse.data;
                 if (paymentUrl) {
                     window.location.href = paymentUrl;
                 } else {
@@ -147,7 +202,6 @@ const ViewCart = () => {
             toast.error('Failed to create order.');
         }
     };
-    
 
     return (
         <>
@@ -166,24 +220,29 @@ const ViewCart = () => {
                                         />
                                         <div className="text-center mt-4">
                                             <h2 className="text-gray-900 text-lg title-font font-medium mb-1">{item.name}</h2>
-                                            <p className="leading-relaxed mb-3">{item.description}</p>
-                                            <div className="flex items-center justify-center gap-4">
+                                            <div className="flex items-center justify-center gap-2">
                                                 <button
                                                     onClick={() => handleDecreaseQuantity(item)}
-                                                    className="text-white bg-red-600 border-0 py-2 px-6 focus:outline-none hover:bg-red-700 rounded font-bold"
+                                                    className="text-white bg-red-600 border-0 py-1 px-5 focus:outline-none hover:bg-red-700 rounded font-bold"
                                                 >
                                                     -
                                                 </button>
+                                                <input
+                                                    type="number"
+                                                    min="1"
+                                                    value={item.quantity}
+                                                    onChange={(e) => handleQuantityChange(item, parseInt(e.target.value))}
+                                                    className="border border-gray-300 text-center h-7 w-20"
+                                                />
                                                 <button
                                                     onClick={() => handleIncreaseQuantity(item)}
-                                                    className="text-white bg-red-600 border-0 py-2 px-6 focus:outline-none hover:bg-red-700 rounded"
+                                                    className="text-white bg-red-600 border-0 py-1 px-5 focus:outline-none hover:bg-red-700 rounded"
                                                 >
                                                     +
                                                 </button>
-                                                <span className="mx-2 text-lg font-semibold">{item.quantity}</span>
                                                 <button
                                                     onClick={() => handleRemoveFromCart(item)}
-                                                    className="text-white bg-red-600 border-0 py-2 px-6 focus:outline-none hover:bg-red-700 rounded"
+                                                    className="text-white bg-red-600 border-0 py-1 px-1.5 focus:outline-none hover:bg-red-700 rounded"
                                                 >
                                                     Delete
                                                 </button>
@@ -198,10 +257,10 @@ const ViewCart = () => {
                     </div>
                     <div className="lg:w-1/2 w-full mt-12 mx-auto">
                         <div className="flex flex-col items-center justify-center">
-                        <p className="text-xl text-gray-900 mb-4 border-t-2 pt-4">
-                            Total: {calculateTotal(cartItems) - discountValue} VND
-                            <span className="text-red-500 ml-2">(-{discountValue} VND)</span>
-                        </p>
+                            <p className="text-xl text-gray-900 mb-4 border-t-2 pt-4">
+                                Total: {formatCurrency(calculateTotal(cartItems) - discountValue)}
+                                <span className="text-red-500 ml-2">(-{formatCurrency(discountValue)})</span>
+                            </p>
                             <div className="flex flex-row space-x-4 mb-4">
                                 <label className="flex items-center">
                                     <input
@@ -260,7 +319,7 @@ const ViewCart = () => {
                                         >
                                             <option value="">Select a voucher</option>
                                             {vouchers.length > 0 && vouchers.map((item) => (
-                                                <option key={item.id} value={item.id}>{`${item.code} - ${item.name}`}</option>
+                                                <option key={item.id} value={item.id}>{`${item.code} - ${item.name} - MinOrderPrice: ${formatCurrency(item.minOrderValue)}`}</option>
                                             ))}
                                         </select>
                                         <button
@@ -276,7 +335,7 @@ const ViewCart = () => {
                                     type="submit"
                                     className="text-white bg-red-600 border-0 py-2 px-8 mt-4 focus:outline-none hover:bg-red-700 rounded-lg"
                                 >
-                                    Submit Order
+                                    Checkout
                                 </button>
                             </form>
                         </div>

@@ -6,10 +6,11 @@ export interface IProduct {
     description: string;
     price: number;
     promotionPrice: number;
+    inStock : number;
     sold: number;
     quantity: number;
     expireAt: string;
-    thumbnailUrl: string | File | null;
+    thumbnailUrl?: string | File | null ;
     thumbnail: string | File | null;
     createAt: string;
     status: string;

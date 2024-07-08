@@ -4,6 +4,7 @@ import { createProduct, getAllProducts } from "../../service/features/productSli
 import { XMarkIcon } from "@heroicons/react/16/solid";
 import { Autocomplete,TextField,Stack } from "@mui/material";
 import instance from "../../service/api/customAxios";
+import { toast } from "react-toastify";
 
 type ProductCreateState = {
     isPopupCreateProductOpen: boolean;
@@ -52,22 +53,29 @@ const PopupCreateProduct: React.FC<ProductCreateState> = ({
         formData.append('price',form.price.toString())
         formData.append('promotionPrice', form.promotionPrice.toString())
         formData.append('quantity', form.quantity.toString())
-        formData.append('productCategories', JSON.stringify(form.productCategories))
-        await dispatch(createProduct(formData))
-        await dispatch(getAllProducts({text:''})).then(()=>{
-            setForm({
-                name:'',
-                description:'',
-                origin:'',
-                thumbnail: null,
-                brand:'Vinamilk',
-                price: 1,
-                promotionPrice: 1,
-                quantity: 1,
-                productCategories: [{ categoryId: ""}]
+        // formData.append('productCategories', JSON.stringify(form.productCategories))
+        formData.append('productCategories', JSON.stringify(form.productCategories.map(item => item.categoryId)))
+        await dispatch(createProduct(formData)).then(()=>{
+            dispatch(getAllProducts({text:''})).then(()=>{
+                setForm({
+                    name:'',
+                    description:'',
+                    origin:'',
+                    thumbnail: null,
+                    brand:'Vinamilk',
+                    price: 1,
+                    promotionPrice: 1,
+                    quantity: 1,
+                    productCategories: [{ categoryId: ""}]
+                })
+                toast.success('Create successfully!')
+                closePopupCreateProduct()
             })
-            closePopupCreateProduct()
+        }).catch(err => {
+            console.log(err)
+            toast.error('Create failed!')
         })
+        
     }
 
     const [productCategories, setProductCategories] = useState([])
@@ -103,7 +111,6 @@ const PopupCreateProduct: React.FC<ProductCreateState> = ({
                                 <input
                                     value={form.name} onChange={(e) => setForm(prev => ({...prev, name: e.target.value}))}
                                     type="text"
-                                    name="name"
                                     id="name"
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
                                 />
@@ -113,7 +120,6 @@ const PopupCreateProduct: React.FC<ProductCreateState> = ({
                                 <label htmlFor="origin" className="block text-sm font-medium text-gray-700">Origin <span className="text-red-600 text-xl">*</span></label>
                                 <input value={form.origin} onChange={(e) => setForm(prev => ({...prev, origin: e.target.value}))}
                                     type="text"
-                                    name="origin"
                                     id="origin"
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
                                 />
@@ -132,7 +138,7 @@ const PopupCreateProduct: React.FC<ProductCreateState> = ({
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="brand" className="block text-sm font-medium text-gray-700">Brand</label>
-                                <Autocomplete options={['Vinamilk','TH True milk','Nutricare','Dutch Lady','NutiFood']} value={form.brand}
+                                <Autocomplete options={['Vinamilk', 'TH True Milk', 'Dutch Lady', 'Meadow Fresh', 'Nutifood', 'Nestle', 'Dalat Milk', 'Morinaga', 'Anlene', 'Abbott', 'Friso', 'Aptamil', 'Glico', 'Wyeth', 'Hipp', 'Mead Johnson', 'Bellamy’s', 'Kendamil', 'Biomil', 'Namyang', 'Ovaltine', 'Vinasoy', 'Yakult', 'Coca-Cola', 'Enfa', 'Pediasure', 'Similac', 'S26', 'Grow Plus+', 'Ensure', 'Nutricare', 'XO', 'Horizon Organic', 'Fairlife', 'Silk', 'Alpro', 'Goodday', 'Anchor', 'Paul’s', 'Arla', 'Devondale', 'Parmalat', 'Borden', 'Dean Foods', 'Land O Lakes', 'TruMoo', 'Yili', 'Mengniu', 'Marigold']} value={form.brand}
                                 disablePortal disableClearable size='small'
                                 onChange={(_, value) => setForm(prev => ({...prev, brand: value}))}
                                 renderInput={(params) => <TextField {...params} />} />
@@ -152,16 +158,14 @@ const PopupCreateProduct: React.FC<ProductCreateState> = ({
                                 <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price</label>
                                 <input value={form.price} onChange={(e) => setForm(prev => ({...prev, price: parseInt(e.target.value)}))}
                                     type="number" min={1}
-                                    name="price"
                                     id="price"
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
                                 />
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="price" className="block text-sm font-medium text-gray-700">Promotion price</label>
-                                <input value={form.price} onChange={(e) => setForm(prev => ({...prev, promotionPrice: parseInt(e.target.value)}))}
+                                <input value={form.promotionPrice} onChange={(e) => setForm(prev => ({...prev, promotionPrice: parseInt(e.target.value)}))}
                                     type="number" min={1}
-                                    name="price"
                                     id="price"
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
                                 />
