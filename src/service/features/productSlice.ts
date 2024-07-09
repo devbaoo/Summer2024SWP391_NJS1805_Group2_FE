@@ -38,12 +38,13 @@ const initialState: ProductState = {
     success: false,
 };
 
-export const getAllProducts = createAsyncThunk<IProduct[], { text?: string | null }>(
+export const getAllProducts = createAsyncThunk<IProduct[], { text?: string | null; category?: string | null }>(
     'products/getAllProducts',
-    async (data, thunkAPI) => {
+    async ({ text, category }, thunkAPI) => {
         try {
-            const response = await axios.post('/products/filter?pageSize=100', {
-                search: data.text
+            const response = await axios.post('/products/filter?pageNumber=0&pageSize=100', {
+                search: text || '',
+                categoryId: category || ''
             });
             return response.data.data;
         } catch (error: any) {
@@ -123,7 +124,7 @@ export const productSlice = createSlice({
             // lưu local storage
             saveCartToStorage(state.cart);
         },
-        increaseQuantity: (state, action: PayloadAction<number>) => {
+        increaseQuantity: (state, action: PayloadAction<string>) => {
             const productId = action.payload;
             if (state.cart) {
                 const cartItem = state.cart.find(item => item.id === productId);
@@ -133,7 +134,7 @@ export const productSlice = createSlice({
                 }
             }
         },
-        decreaseQuantity: (state, action: PayloadAction<number>) => {
+        decreaseQuantity: (state, action: PayloadAction<string>) => {
             const productId = action.payload;
             if (state.cart) {
                 const cartItemIndex = state.cart.findIndex(item => item.id === productId);
@@ -148,7 +149,7 @@ export const productSlice = createSlice({
                 }
             }
         },
-        removeFromCart: (state, action: PayloadAction<number>) => {
+        removeFromCart: (state, action: PayloadAction<string>) => {
             const productId = action.payload;
             if (state.cart) {
                 const cartItemIndex = state.cart.findIndex(item => item.id === productId);
@@ -158,7 +159,7 @@ export const productSlice = createSlice({
                 }
             }
         },
-        updateQuantity: (state, action: PayloadAction<{ id: number; quantity: number }>) => {
+        updateQuantity: (state, action: PayloadAction<{ id: string; quantity: number }>) => {
             const { id, quantity } = action.payload;
             if (state.cart) {
                 const cartItem = state.cart.find(item => item.id === id);
@@ -167,6 +168,9 @@ export const productSlice = createSlice({
                     saveCartToStorage(state.cart);
                 }
             }
+        },
+        resetProduct: (state) => {
+            state.product = null;
         },
     },
     extraReducers: (builder) => {
@@ -209,5 +213,5 @@ export const productSlice = createSlice({
     },
 });
 
-export const { setError, addToCart, increaseQuantity, decreaseQuantity, removeFromCart, updateQuantity } = productSlice.actions;
+export const { setError, addToCart, increaseQuantity, decreaseQuantity, removeFromCart, updateQuantity, resetProduct } = productSlice.actions;
 export default productSlice.reducer;
