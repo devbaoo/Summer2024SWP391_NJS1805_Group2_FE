@@ -153,7 +153,6 @@ const PopupProductDetail: React.FC<PopupProductDetailProps> = ({
                                     </div>
                                         {checkValid.origin && <p className='text-red-500 text-xs mt-2'>This field is required!</p>}
                                     </div>
-
                                     <div>
                                         <span className="text-sm text-back-500 font-bold">
                                             Brand

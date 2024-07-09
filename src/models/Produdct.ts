@@ -1,5 +1,8 @@
+
+
+
 export interface IProduct {
-    id: string ;
+    id: string;
     name: string;
     origin: string;
     brand: string;
@@ -10,13 +13,25 @@ export interface IProduct {
     sold: number;
     quantity: number;
     expireAt: string;
-    thumbnailUrl: string | File | null ;
+    thumbnailUrl: string | File | null;
     thumbnail: string | File | null;
     createAt: string;
     status: string;
+    productCategories: IProductCategory[];
     feedbacks: IFeedback[];
     revenue: number;
-    rating: number
+    rating: number;
+}
+
+
+export interface ICategory {
+    id: string;
+    name: string;
+}
+
+export interface IProductCategory {
+    id: string;
+    category: ICategory;
 }
 export interface IFeedback {
     id: number;
@@ -27,6 +42,7 @@ export interface IFeedback {
     status: string;
     customer: ICustomer;
 }
+
 export interface ICustomer {
     id: number;
     username: string;
@@ -36,6 +52,7 @@ export interface ICustomer {
     createAt: string;
     status: string;
 }
+
 export interface IProductCreate {
     id: number;
     name: string;
