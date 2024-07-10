@@ -8,7 +8,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
-
 interface Customer {
   id: string;
   username: string;
@@ -49,7 +48,6 @@ interface OrderDetail {
   price: number;
   hasFeedback: boolean;
 }
-
 
 interface Order {
   id: string;
@@ -110,7 +108,6 @@ const OrderManagementPage: React.FC = () => {
           endpoint = `/orders/cancel`;
           data = { orderId, note };
           break;
-        // Add cases for "Pending" and "Paid" if necessary
         default:
           throw new Error("Unknown status");
       }
@@ -124,6 +121,7 @@ const OrderManagementPage: React.FC = () => {
       loadOrders();
     } catch (error) {
       console.error(`Error updating order ${orderId} status:`, error);
+
       if (axios.isAxiosError(error) && error.response) {
         toast.error(error.response.data);
       } else if (error instanceof Error) {
@@ -403,7 +401,6 @@ const OrderManagementPage: React.FC = () => {
         note={true}
         onRowDoubleClick={(row) => handleRowDoubleClick(row)}
       />
-
       <ToastContainer />
       {isCancelModalOpen && renderCancelModal()}
       {isDeliveryNoteModalOpen && renderDeliveryNoteModal()}
