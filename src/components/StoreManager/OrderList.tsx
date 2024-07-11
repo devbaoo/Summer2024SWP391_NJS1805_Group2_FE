@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Stack, MenuItem, Select, Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, Grid, IconButton } from "@mui/material";
+import { Stack, MenuItem, Select, Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, Grid, IconButton  } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import CommonTable from "../Table/CommonTable";
 import instance from "../../service/api/customAxios";
@@ -233,17 +233,24 @@ const OrderManagementPage: React.FC = () => {
 
   const renderDetailModal = () => {
     if (!selectedOrder) return null;
-
+  
+    const formatCurrency = (value) => new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+    }).format(value);
+  
     return (
       <Dialog
         open={isDetailModalOpen}
         onClose={() => setIsDetailModalOpen(false)}
         maxWidth="md"
         fullWidth
-        PaperProps={{ style: { borderRadius: 12 } }}
+        PaperProps={{ style: { borderRadius: 12, padding: 16, boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.1)' } }}
       >
-        <DialogTitle>
-          Order Details
+        <DialogTitle sx={{ position: 'relative', paddingBottom: '16px' }}>
+          <Typography variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
+            Order Details
+          </Typography>
           <IconButton
             aria-label="close"
             onClick={() => setIsDetailModalOpen(false)}
@@ -254,8 +261,8 @@ const OrderManagementPage: React.FC = () => {
         </DialogTitle>
         <DialogContent dividers>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <Typography variant="h6">Order Information:</Typography>
+            <Grid item xs={12} sx={{ backgroundColor: '#f9f9f9', padding: '8px 16px', borderRadius: '8px', marginBottom: '16px' }}>
+              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#3f51b5' }}>Order Information</Typography>
             </Grid>
             <Grid item xs={6}>
               <Typography variant="body1"><strong>Order ID:</strong> {selectedOrder.id}</Typography>
@@ -279,16 +286,16 @@ const OrderManagementPage: React.FC = () => {
               <Typography variant="body1"><strong>Created At:</strong> {new Date(selectedOrder.createAt).toLocaleString()}</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Typography variant="body1"><strong>Amount:</strong> {selectedOrder.amount}</Typography>
+              <Typography variant="body1"><strong>Amount:</strong> {formatCurrency(selectedOrder.amount)}</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Typography variant="body1"><strong>Discount:</strong> {selectedOrder.discount}</Typography>
+              <Typography variant="body1"><strong>Discount:</strong> {formatCurrency(selectedOrder.discount)}</Typography>
             </Grid>
             <Grid item xs={12}>
               <Typography variant="body1"><strong>Note:</strong> {selectedOrder.note}</Typography>
             </Grid>
-            <Grid item xs={12}>
-              <Typography variant="h6">Customer Details:</Typography>
+            <Grid item xs={12} sx={{ backgroundColor: '#f9f9f9', padding: '8px 16px', borderRadius: '8px', marginTop: '16px', marginBottom: '16px' }}>
+              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#3f51b5' }}>Customer Details</Typography>
             </Grid>
             <Grid item xs={6}>
               <Typography variant="body1"><strong>Name:</strong> {selectedOrder.customer.name}</Typography>
@@ -302,8 +309,8 @@ const OrderManagementPage: React.FC = () => {
             <Grid item xs={6}>
               <Typography variant="body1"><strong>Address:</strong> {selectedOrder.customer.address}</Typography>
             </Grid>
-            <Grid item xs={12}>
-              <Typography variant="h6">Order Details:</Typography>
+            <Grid item xs={12} sx={{ backgroundColor: '#f9f9f9', padding: '8px 16px', borderRadius: '8px', marginTop: '16px' }}>
+              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#3f51b5' }}>Order Details</Typography>
             </Grid>
             {selectedOrder.orderDetails.map((detail) => (
               <React.Fragment key={detail.id}>
@@ -314,10 +321,10 @@ const OrderManagementPage: React.FC = () => {
                   <Typography variant="body1"><strong>Quantity:</strong> {detail.quantity}</Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography variant="body1"><strong>Price:</strong> {detail.price}</Typography>
+                  <Typography variant="body1"><strong>Price:</strong> {formatCurrency(detail.price)}</Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography variant="body1"><strong>Total Price:</strong> {detail.price * detail.quantity}</Typography>
+                  <Typography variant="body1"><strong>Total Price:</strong> {formatCurrency(detail.price * detail.quantity)}</Typography>
                 </Grid>
               </React.Fragment>
             ))}
@@ -331,6 +338,8 @@ const OrderManagementPage: React.FC = () => {
       </Dialog>
     );
   };
+  
+  
 
   useEffect(() => {
     loadOrders();
