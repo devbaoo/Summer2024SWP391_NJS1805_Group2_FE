@@ -234,7 +234,7 @@ const OrderManagementPage: React.FC = () => {
   const renderDetailModal = () => {
     if (!selectedOrder) return null;
   
-    const formatCurrency = (value) => new Intl.NumberFormat('vi-VN', {
+    const formatCurrency = (value : number) => new Intl.NumberFormat('vi-VN', {
       style: 'currency',
       currency: 'VND',
     }).format(value);
