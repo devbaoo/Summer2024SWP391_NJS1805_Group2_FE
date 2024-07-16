@@ -10,7 +10,6 @@ type PopupProductDetailProps = {
       "quantity": number | null,
       "importDate":string,
       "expiredAt": string,
-      "promotionPrice": number | null,
     };
     onPopupDetail: boolean;
     setOnPopupDetail: React.Dispatch<React.SetStateAction<boolean>>;
@@ -46,7 +45,6 @@ const PopupProductLineDetail: React.FC<PopupProductDetailProps> = ({
     await instance.put(`/product-lines/update/${productLine.id}`,{
       "quantity": form.quantity,
       "expiredAt": form.expiredAt,
-      "promotionPrice": form.promotionPrice
     }).then(()=>{
       loadProductLines()
       toast.success('Update successfully')
@@ -118,15 +116,6 @@ const PopupProductLineDetail: React.FC<PopupProductDetailProps> = ({
                                     value={form.quantity ? form.quantity : 0} onChange={(e) => setForm(prev => ({...prev, quantity: parseInt(e.target.value)}))}
                                     type="number"
                                     id="name"
-                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="promotionPrice" className="block text-sm font-medium text-gray-700">Promotion price</label>
-                                <input
-                                    value={form.promotionPrice ? form.promotionPrice : 0} onChange={(e) => setForm(prev => ({...prev, promotionPrice: parseInt(e.target.value)}))}
-                                    type="number"
-                                    id="promotionPrice"
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
                                 />
                             </div>

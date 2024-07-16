@@ -13,7 +13,6 @@ type ProductLine = {
     importDate: string;
     expiredAt: string;
     quantity: number;
-    promotionPrice: number;
 };
 
 type PopupProductDetailProps = {
@@ -97,7 +96,6 @@ const PopupProductDetail: React.FC<PopupProductDetailProps> = ({
         if (imageSend) formData.append('thumbnail', imageSend);
         formData.append('brand', form.brand);
         formData.append('price', form.price.toString());
-        formData.append('promotionPrice', form.promotionPrice.toString());
         formData.append('status', form.status);
         try {
             await instance.put(`/products/${product.id}`, formData);
@@ -143,7 +141,6 @@ const PopupProductDetail: React.FC<PopupProductDetailProps> = ({
             await instance.put(`/product-lines/update/${line.id}`, {
                 quantity: line.quantity,
                 expiredAt: line.expiredAt,
-                promotionPrice: line.promotionPrice,
             });
             toast.success('Product line updated successfully');
             fetchProductLines(); // Refresh product lines
@@ -163,7 +160,6 @@ const PopupProductDetail: React.FC<PopupProductDetailProps> = ({
         quantity: 1,
         importDate: new Date().toLocaleDateString(),
         expiredAt: "",
-        promotionPrice: 1
     });
 
     const validateNewProductLine = () => {
@@ -180,7 +176,6 @@ const PopupProductDetail: React.FC<PopupProductDetailProps> = ({
                 quantity: 1,
                 importDate: new Date().toLocaleDateString(),
                 expiredAt: "",
-                promotionPrice: 1
             });
             toast.success('Create successfully');
         } catch (err) {
@@ -318,20 +313,8 @@ const PopupProductDetail: React.FC<PopupProductDetailProps> = ({
                                             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
                                         />
                                     </div>
-                                    <div>
-                                        <span className="text-sm text-back-500 font-bold">
-                                            Promotion price
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <input
-                                            value={form.promotionPrice}
-                                            onChange={(e) => setForm(prev => ({ ...prev, promotionPrice: parseInt(e.target.value) }))}
-                                            type="number"
-                                            id="promotionPrice"
-                                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
-                                        />
-                                    </div>
+                    
+                                    
                                     <div>
                                         <span className="text-sm text-back-500 font-bold">
                                             Status
@@ -440,17 +423,7 @@ const PopupProductDetail: React.FC<PopupProductDetailProps> = ({
                                                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
                                                     />
                                                 </div>
-                                                <div>
-                                                    <span className="text-sm text-back-500 font-bold">Promotion Price</span>
-                                                </div>
-                                                <div>
-                                                    <input
-                                                        value={newProductLine.promotionPrice}
-                                                        onChange={(e) => setNewProductLine(prev => ({ ...prev, promotionPrice: parseInt(e.target.value) }))}
-                                                        type="number"
-                                                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
-                                                    />
-                                                </div>
+                                                
                                             </div>
                                             <div className="flex justify-end mt-4">
                                                 <button onClick={handleCreateProductLine}
@@ -509,18 +482,7 @@ const PopupProductDetail: React.FC<PopupProductDetailProps> = ({
                                                             type="number"
                                                             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
                                                         />
-                                                    </div>
-                                                    <div>
-                                                        <span className="text-sm text-back-500 font-bold">Promotion Price</span>
-                                                    </div>
-                                                    <div>
-                                                        <input
-                                                            value={line.promotionPrice}
-                                                            onChange={(e) => setProductLines(prev => prev.map(pl => pl.id === line.id ? { ...pl, promotionPrice: parseInt(e.target.value) } : pl))}
-                                                            type="number"
-                                                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm"
-                                                        />
-                                                    </div>
+                                                    </div> 
                                                 </div>
                                                 {errorMessages[line.id] && (
                                                     <p className='text-red-500 text-xs mt-2'>{errorMessages[line.id]}</p>

@@ -20,7 +20,6 @@ const PopupCreateProductLine: React.FC<ProductCreateState> = ({
       "quantity": 1,
       "importDate": new Date().toLocaleDateString(),
       "expiredAt": "",
-      "promotionPrice": 1
     })
     const validation = () => {
         form.expiredAt === '' ? setCheckExpireDate(true) : setCheckExpireDate(false)
@@ -35,7 +34,6 @@ const PopupCreateProductLine: React.FC<ProductCreateState> = ({
             "quantity": 1,
             "importDate": new Date().toLocaleDateString(),
             "expiredAt": "",
-            "promotionPrice": 1
           })
         toast.success('Create successfully')
         closePopupCreateProduct()
@@ -72,15 +70,7 @@ const PopupCreateProductLine: React.FC<ProductCreateState> = ({
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
                                 />
                             </div>
-                            <div className="mb-4">
-                                <label htmlFor="promotionPrice" className="block text-sm font-medium text-gray-700">Promotion price</label>
-                                <input min={1}
-                                    value={form.promotionPrice} onChange={(e) => setForm(prev => ({...prev, promotionPrice: e.target.value ? parseInt(e.target.value) : 1}))}
-                                    type="number"
-                                    id="promotionPrice"
-                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
-                                />
-                            </div>
+                            
                             <div className="mb-4">
                                 <label htmlFor="expiredAt" className="block text-sm font-medium text-gray-700">Expire at <span className="text-red-600 text-xl">*</span></label>
                                 <input

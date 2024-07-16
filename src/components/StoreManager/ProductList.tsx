@@ -30,10 +30,6 @@ const columns: MRT_ColumnDef<IProduct>[] = [
         header: "In stock",
     },
     {
-        accessorKey: "promotionPrice",
-        header: "Promotion price",
-    },
-    {
         accessorKey: "price",
         header: "Price",
     },

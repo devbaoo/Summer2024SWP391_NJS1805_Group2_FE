@@ -26,7 +26,6 @@ interface Product {
   thumbnailUrl: string;
   brand: string;
   price: number;
-  promotionPrice: number;
   inStock: number;
   sold: number;
   status: string;
