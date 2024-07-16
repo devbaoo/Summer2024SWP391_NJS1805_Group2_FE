@@ -24,7 +24,6 @@ const PopupCreateProduct: React.FC<ProductCreateState> = ({
         thumbnail: null as string | null,
         brand:'Vinamilk',
         price: 1,
-        promotionPrice: 1,
         quantity: 1,
         productCategories: [{ categoryId: ""}]
     })
@@ -51,7 +50,6 @@ const PopupCreateProduct: React.FC<ProductCreateState> = ({
         formData.append('madeIn',form.origin)
         formData.append('brand',form.brand)
         formData.append('price',form.price.toString())
-        formData.append('promotionPrice', form.promotionPrice.toString())
         formData.append('quantity', form.quantity.toString())
         // formData.append('productCategories', JSON.stringify(form.productCategories))
         formData.append('productCategories', JSON.stringify(form.productCategories.map(item => item.categoryId)))
@@ -64,7 +62,6 @@ const PopupCreateProduct: React.FC<ProductCreateState> = ({
                     thumbnail: null,
                     brand:'Vinamilk',
                     price: 1,
-                    promotionPrice: 1,
                     quantity: 1,
                     productCategories: [{ categoryId: ""}]
                 })
@@ -157,14 +154,6 @@ const PopupCreateProduct: React.FC<ProductCreateState> = ({
                             <div className="mb-4">
                                 <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price</label>
                                 <input value={form.price} onChange={(e) => setForm(prev => ({...prev, price: parseInt(e.target.value)}))}
-                                    type="number" min={1}
-                                    id="price"
-                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="price" className="block text-sm font-medium text-gray-700">Promotion price</label>
-                                <input value={form.promotionPrice} onChange={(e) => setForm(prev => ({...prev, promotionPrice: parseInt(e.target.value)}))}
                                     type="number" min={1}
                                     id="price"
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"

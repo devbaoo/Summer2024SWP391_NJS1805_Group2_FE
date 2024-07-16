@@ -16,10 +16,7 @@ const columns: MRT_ColumnDef<IProduct>[] = [
         accessorKey: "quantity",
         header: "Quantity",
     },
-    {
-        accessorKey: "promotionPrice",
-        header: "Promotion price",
-    },
+    
     {
         accessorKey: "importDate",
         header: "Imported date",
@@ -38,6 +35,7 @@ const ProductLineList = () => {
     const [onPopupProductDetail, setOnPopupProductDetail] = useState<boolean>(false);
     const [products, setProducts] = useState([])
     const [selectProduct, setSelectProduct] = useState({label:'',value:''})
+    
     const loadProducts = async() => {
         await instance.post('/products/filter?pageNumber=0&pageSize=1000',{})
         .then(res =>{
