@@ -50,7 +50,7 @@ const PopupCreateProduct: React.FC<ProductCreateState> = ({
         formData.append('madeIn',form.origin)
         formData.append('brand',form.brand)
         formData.append('price',form.price.toString())
-        formData.append('quantity', form.quantity.toString())
+        // formData.append('quantity', form.quantity.toString())
         // formData.append('productCategories', JSON.stringify(form.productCategories))
         formData.append('productCategories', JSON.stringify(form.productCategories.map(item => item.categoryId)))
         await instance.post(`/products`,formData).then(()=>{
@@ -159,7 +159,7 @@ const PopupCreateProduct: React.FC<ProductCreateState> = ({
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
                                 />
                             </div>
-                            <div className="mb-4">
+                            {/* <div className="mb-4">
                                 <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">Quantity</label>
                                 <input value={form.quantity} onChange={(e) => setForm(prev => ({...prev, quantity: parseInt(e.target.value)}))}
                                     type="number" min={1}
@@ -167,7 +167,7 @@ const PopupCreateProduct: React.FC<ProductCreateState> = ({
                                     id="quantity"
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm"
                                 />
-                            </div>
+                            </div> */}
 
                             <label className="block text-sm font-medium text-gray-700">Thumbnail <span className="text-red-600 text-xl">*</span></label>
                             {checkValid.thumbnail && <p className='text-red-500 text-xs mt-2'>Thumbnail is required!</p>}

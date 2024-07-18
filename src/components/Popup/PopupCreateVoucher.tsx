@@ -15,7 +15,7 @@ const PopupCreateVoucher:React.FC<PopupCreateVoucherProps> = ({
     const [form, setForm]=useState({
       "code": "",
       "name": "",
-      "thumbnailUrl": "string",
+    //   "thumbnailUrl": "string",
       "from": "",
       "to": "",
       "minOrderValue": 1,
@@ -43,7 +43,7 @@ const PopupCreateVoucher:React.FC<PopupCreateVoucherProps> = ({
             setForm({
               "code": "",
               "name": "",
-              "thumbnailUrl": "string",
+            //   "thumbnailUrl": "string",
               "from": "",
               "to": "",
               "minOrderValue": 1,
@@ -68,7 +68,7 @@ const PopupCreateVoucher:React.FC<PopupCreateVoucherProps> = ({
                         onClick={()=>{setForm({
                             "code": "",
                             "name": "",
-                            "thumbnailUrl": "string",
+                            // "thumbnailUrl": "string",
                             "from": "",
                             "to": "",
                             "minOrderValue": 1,
