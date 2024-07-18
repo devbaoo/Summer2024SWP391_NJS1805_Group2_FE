@@ -49,8 +49,10 @@ const VoucherList = () => {
     const [onPopupVoucherDetail, setOnPopupVoucherDetail] = useState<boolean>(false);
     
     const loadVouchers = async() => {
-        await instance.post('/vouchers/filter',{params: {pageNumber:0, pageSize:100}})
+        await instance.post('/vouchers/filter?pageSize=1000', {})
+        // const response = await instance.post("/orders/filter?pageSize=1000", {});
         .then(res =>{setVouchers(res.data.data)}).catch(err=>console.log(err))
+
     }
     useEffect(() => {
         loadVouchers()
