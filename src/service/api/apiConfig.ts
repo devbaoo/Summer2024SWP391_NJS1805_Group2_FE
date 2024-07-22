@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://suame88.azurewebsites.net/api'
+export const BASE_URL = 'https://suame8888.azurewebsites.net/api'
 // export const BASE_URL = 'https://localhost:7041/api'
 
 export const loginEndpoint = `${BASE_URL}/auth`
