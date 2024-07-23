@@ -374,7 +374,7 @@ const OrderManagementPage: React.FC = () => {
           onChange={(event) =>
             handleStatusChange(row.original.id, event.target.value as string)
           }
-          disabled={cell.getValue<string>() === "Completed"}
+          disabled={cell.getValue<string>() === "Completed" || cell.getValue<string>() === "Canceled"}
           className="text-lg"
         >
           <MenuItem value="Pending">Pending</MenuItem>
